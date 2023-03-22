@@ -1,0 +1,11 @@
+<RCC>
+  <qresource>
+    <file>images/icons/bug.png</file>
+    <file>images/icons/cross.png</file>
+    <file>images/icons/home.png</file>
+    <file>images/icons/minimize-sign.png</file>
+    <file>images/icons/preRequisits.png</file>
+    <file>images/icons/settings.png</file>
+    <file>images/placeholder.PNG</file>
+  </qresource>
+</RCC>
