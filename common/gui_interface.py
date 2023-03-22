@@ -1,7 +1,7 @@
 # Initial Modules to setup the Main Window Class
 from PySide6 import QtCore
-from PySide6.QtWidgets import QMainWindow
-from assets.ui.ui_DesignTwo import *
+from PySide6.QtWidgets import QMainWindow, QGraphicsDropShadowEffect
+from assets.ui_DesignThree import *
 from PySide6.QtCore import *
 from PySide6.QtGui import QPixmap, QImage
 
@@ -27,6 +27,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Set Initial Capturing State
         self.capturing = False
 
+        ####################################################################################################
+        # Window Setup
+        ####################################################################################################
+
         # Connecting to our UI Created in QtDesinger
         self.setupUi(self)
         # Set Window Title
@@ -34,6 +38,26 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Set moving window functions for topBar
         self.topBar.mouseMoveEvent = self.moveWindow
+
+        ####################################################################################################
+        # Setup Page Buttons
+        ####################################################################################################
+
+        # Home Page
+        self.mainPageBtn.clicked.connect(
+            lambda: self.stackedWidget.setCurrentWidget(self.mainPage))
+
+        # Pre-Requisites Page
+        self.prerequisitesBtn.clicked.connect(
+            lambda: self.stackedWidget.setCurrentWidget(self.preRequisitesPage))
+
+        # Settings Page
+        self.settingsBtn.clicked.connect(
+            lambda: self.stackedWidget.setCurrentWidget(self.settingsPage))
+
+        # Bug Submission Page
+        self.bugBtn.clicked.connect(
+            lambda: self.stackedWidget.setCurrentWidget(self.submitBugPage))
 
     def start_capture(self):
         pass
@@ -51,10 +75,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             # Get Width
             width = self.menuBar.width()
             maxExtend = 200
-            standard = 70
+            standard = 0
 
             # Set Max Width
-            if width == 70:
+            if width == 0:
                 widthExtend = maxExtend
             else:
                 widthExtend = standard

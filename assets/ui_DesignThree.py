@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-# Form generated from reading UI file 'DesignTwoYFVRzy.ui'
+# Form generated from reading UI file 'DesignThree.ui'
 ##
 # Created by: Qt User Interface Compiler version 6.4.2
 ##
@@ -75,9 +75,9 @@ class Ui_MainWindow(object):
             self.toggleMenuBtn.sizePolicy().hasHeightForWidth())
         self.toggleMenuBtn.setSizePolicy(sizePolicy)
         font = QFont()
-        font.setFamilies([u"Cascadia Mono SemiLight"])
+        font.setFamilies([u"Cascadia Mono SemiBold"])
         font.setPointSize(10)
-        font.setBold(True)
+        font.setBold(False)
         font.setStyleStrategy(QFont.PreferAntialias)
         self.toggleMenuBtn.setFont(font)
         self.toggleMenuBtn.setStyleSheet(u"color: rgb(255, 255, 255);\n"
@@ -93,12 +93,14 @@ class Ui_MainWindow(object):
         self.frameBar.setFrameShadow(QFrame.Raised)
         self.label = QLabel(self.frameBar)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(10, 0, 281, 40))
+        self.label.setGeometry(QRect(10, 0, 361, 40))
         self.label.setMaximumSize(QSize(16777215, 40))
         font1 = QFont()
-        font1.setFamilies([u"Cascadia Mono SemiBold"])
-        font1.setPointSize(15)
-        font1.setBold(True)
+        font1.setFamilies([u"Cascadia Mono Light"])
+        font1.setPointSize(20)
+        font1.setBold(False)
+        font1.setItalic(False)
+        font1.setKerning(True)
         self.label.setFont(font1)
         self.label.setStyleSheet(u"color: white;")
         self.closeBtn = QPushButton(self.frameBar)
@@ -145,11 +147,16 @@ class Ui_MainWindow(object):
         self.menuBar = QFrame(self.content)
         self.menuBar.setObjectName(u"menuBar")
         self.menuBar.setMinimumSize(QSize(0, 0))
-        self.menuBar.setMaximumSize(QSize(70, 16777215))
+        self.menuBar.setMaximumSize(QSize(0, 16777215))
+        font2 = QFont()
+        font2.setFamilies([u"Segoe UI Emoji"])
+        font2.setPointSize(9)
+        self.menuBar.setFont(font2)
         self.menuBar.setStyleSheet(u"background-color: rgb(68, 68, 102)")
         self.menuBar.setFrameShape(QFrame.StyledPanel)
         self.menuBar.setFrameShadow(QFrame.Raised)
         self.verticalLayout_3 = QVBoxLayout(self.menuBar)
+        self.verticalLayout_3.setSpacing(0)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.menuBtns = QFrame(self.menuBar)
@@ -157,49 +164,21 @@ class Ui_MainWindow(object):
         self.menuBtns.setFrameShape(QFrame.StyledPanel)
         self.menuBtns.setFrameShadow(QFrame.Raised)
         self.verticalLayout_5 = QVBoxLayout(self.menuBtns)
-        self.verticalLayout_5.setSpacing(15)
+        self.verticalLayout_5.setSpacing(0)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
-        self.verticalLayout_5.setContentsMargins(0, 20, 0, 0)
-        self.bugBtnFrame = QFrame(self.menuBtns)
-        self.bugBtnFrame.setObjectName(u"bugBtnFrame")
-        self.bugBtnFrame.setMinimumSize(QSize(200, 40))
-        self.bugBtnFrame.setMaximumSize(QSize(16777215, 40))
-        self.bugBtnFrame.setCursor(QCursor(Qt.PointingHandCursor))
-        self.bugBtnFrame.setStyleSheet(u"QFrame::hover{\n"
-                                       "	background-color: rgb(139, 139, 207);\n"
-                                       "	color: white;\n"
-                                       "}")
-        self.bugBtnFrame.setFrameShape(QFrame.StyledPanel)
-        self.bugBtnFrame.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_5 = QHBoxLayout(self.bugBtnFrame)
-        self.horizontalLayout_5.setSpacing(0)
-        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.horizontalLayout_5.setContentsMargins(5, 0, 0, 0)
-        self.bugLabel = QLabel(self.bugBtnFrame)
-        self.bugLabel.setObjectName(u"bugLabel")
-        self.bugLabel.setMinimumSize(QSize(0, 0))
-        self.bugLabel.setMaximumSize(QSize(50, 50))
-        self.bugLabel.setCursor(QCursor(Qt.PointingHandCursor))
-        self.bugLabel.setStyleSheet(u"background: transparent;")
-        self.bugLabel.setFrameShape(QFrame.NoFrame)
-        self.bugLabel.setFrameShadow(QFrame.Plain)
-        self.bugLabel.setLineWidth(0)
-        self.bugLabel.setPixmap(QPixmap(u":/images/icons/bug.png"))
-        self.bugLabel.setScaledContents(True)
-
-        self.horizontalLayout_5.addWidget(self.bugLabel)
-
-        self.bugBtn = QPushButton(self.bugBtnFrame)
+        self.verticalLayout_5.setContentsMargins(0, 15, 0, 0)
+        self.bugBtn = QPushButton(self.menuBtns)
         self.bugBtn.setObjectName(u"bugBtn")
-        self.bugBtn.setMinimumSize(QSize(0, 40))
-        font2 = QFont()
-        font2.setPointSize(12)
-        font2.setBold(False)
-        font2.setItalic(False)
-        font2.setUnderline(False)
-        font2.setStrikeOut(False)
-        font2.setKerning(False)
-        self.bugBtn.setFont(font2)
+        self.bugBtn.setMinimumSize(QSize(0, 50))
+        font3 = QFont()
+        font3.setFamilies([u"Cascadia Mono SemiLight"])
+        font3.setPointSize(10)
+        font3.setBold(False)
+        font3.setItalic(False)
+        font3.setUnderline(False)
+        font3.setStrikeOut(False)
+        font3.setKerning(False)
+        self.bugBtn.setFont(font3)
         self.bugBtn.setCursor(QCursor(Qt.PointingHandCursor))
         self.bugBtn.setStyleSheet(u"QPushButton {\n"
                                   "	color: rgb(255, 255, 255);\n"
@@ -212,41 +191,15 @@ class Ui_MainWindow(object):
                                   "	background-color: rgb(139, 139, 207)\n"
                                   "}")
 
-        self.horizontalLayout_5.addWidget(self.bugBtn)
+        self.verticalLayout_5.addWidget(self.bugBtn)
 
-        self.verticalLayout_5.addWidget(self.bugBtnFrame)
-
-        self.mainPageFrameBtn = QFrame(self.menuBtns)
-        self.mainPageFrameBtn.setObjectName(u"mainPageFrameBtn")
-        self.mainPageFrameBtn.setMinimumSize(QSize(200, 40))
-        self.mainPageFrameBtn.setMaximumSize(QSize(16777215, 40))
-        self.mainPageFrameBtn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.mainPageFrameBtn.setStyleSheet(u"QFrame::hover{\n"
-                                            "	background-color: rgb(139, 139, 207);\n"
-                                            "	color: white;\n"
-                                            "}")
-        self.mainPageFrameBtn.setFrameShape(QFrame.StyledPanel)
-        self.mainPageFrameBtn.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_4 = QHBoxLayout(self.mainPageFrameBtn)
-        self.horizontalLayout_4.setSpacing(0)
-        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.horizontalLayout_4.setContentsMargins(5, 0, 0, 0)
-        self.mainPageLabel = QLabel(self.mainPageFrameBtn)
-        self.mainPageLabel.setObjectName(u"mainPageLabel")
-        self.mainPageLabel.setMaximumSize(QSize(50, 50))
-        self.mainPageLabel.setCursor(QCursor(Qt.PointingHandCursor))
-        self.mainPageLabel.setStyleSheet(u"background: transparent;")
-        self.mainPageLabel.setPixmap(QPixmap(u":/images/icons/home.png"))
-        self.mainPageLabel.setScaledContents(True)
-
-        self.horizontalLayout_4.addWidget(self.mainPageLabel)
-
-        self.mainPageBtn = QPushButton(self.mainPageFrameBtn)
+        self.mainPageBtn = QPushButton(self.menuBtns)
         self.mainPageBtn.setObjectName(u"mainPageBtn")
-        self.mainPageBtn.setMinimumSize(QSize(0, 40))
-        font3 = QFont()
-        font3.setPointSize(12)
-        self.mainPageBtn.setFont(font3)
+        self.mainPageBtn.setMinimumSize(QSize(0, 50))
+        font4 = QFont()
+        font4.setFamilies([u"Cascadia Mono SemiLight"])
+        font4.setPointSize(10)
+        self.mainPageBtn.setFont(font4)
         self.mainPageBtn.setCursor(QCursor(Qt.PointingHandCursor))
         self.mainPageBtn.setStyleSheet(u"QPushButton {\n"
                                        "	color: rgb(255, 255, 255);\n"
@@ -259,40 +212,12 @@ class Ui_MainWindow(object):
                                        "	background-color: rgb(139, 139, 207)\n"
                                        "}")
 
-        self.horizontalLayout_4.addWidget(self.mainPageBtn)
+        self.verticalLayout_5.addWidget(self.mainPageBtn)
 
-        self.verticalLayout_5.addWidget(self.mainPageFrameBtn)
-
-        self.preRequisitsBtnFrame = QFrame(self.menuBtns)
-        self.preRequisitsBtnFrame.setObjectName(u"preRequisitsBtnFrame")
-        self.preRequisitsBtnFrame.setMinimumSize(QSize(200, 40))
-        self.preRequisitsBtnFrame.setMaximumSize(QSize(16777215, 40))
-        self.preRequisitsBtnFrame.setCursor(QCursor(Qt.PointingHandCursor))
-        self.preRequisitsBtnFrame.setStyleSheet(u"QFrame::hover{\n"
-                                                "	background-color: rgb(139, 139, 207);\n"
-                                                "	color: white;\n"
-                                                "}")
-        self.preRequisitsBtnFrame.setFrameShape(QFrame.StyledPanel)
-        self.preRequisitsBtnFrame.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_6 = QHBoxLayout(self.preRequisitsBtnFrame)
-        self.horizontalLayout_6.setSpacing(0)
-        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.horizontalLayout_6.setContentsMargins(5, 0, 0, 0)
-        self.prerequisitesLabel = QLabel(self.preRequisitsBtnFrame)
-        self.prerequisitesLabel.setObjectName(u"prerequisitesLabel")
-        self.prerequisitesLabel.setMaximumSize(QSize(50, 50))
-        self.prerequisitesLabel.setCursor(QCursor(Qt.PointingHandCursor))
-        self.prerequisitesLabel.setStyleSheet(u"background: transparent;")
-        self.prerequisitesLabel.setPixmap(
-            QPixmap(u":/images/icons/preRequisits.png"))
-        self.prerequisitesLabel.setScaledContents(True)
-
-        self.horizontalLayout_6.addWidget(self.prerequisitesLabel)
-
-        self.prerequisitesBtn = QPushButton(self.preRequisitsBtnFrame)
+        self.prerequisitesBtn = QPushButton(self.menuBtns)
         self.prerequisitesBtn.setObjectName(u"prerequisitesBtn")
-        self.prerequisitesBtn.setMinimumSize(QSize(0, 40))
-        self.prerequisitesBtn.setFont(font3)
+        self.prerequisitesBtn.setMinimumSize(QSize(0, 50))
+        self.prerequisitesBtn.setFont(font4)
         self.prerequisitesBtn.setCursor(QCursor(Qt.PointingHandCursor))
         self.prerequisitesBtn.setStyleSheet(u"QPushButton {\n"
                                             "	color: rgb(255, 255, 255);\n"
@@ -305,40 +230,12 @@ class Ui_MainWindow(object):
                                             "	background-color: rgb(139, 139, 207)\n"
                                             "}")
 
-        self.horizontalLayout_6.addWidget(self.prerequisitesBtn)
+        self.verticalLayout_5.addWidget(self.prerequisitesBtn)
 
-        self.verticalLayout_5.addWidget(self.preRequisitsBtnFrame)
-
-        self.SettingsBtnFrame = QFrame(self.menuBtns)
-        self.SettingsBtnFrame.setObjectName(u"SettingsBtnFrame")
-        self.SettingsBtnFrame.setMinimumSize(QSize(200, 40))
-        self.SettingsBtnFrame.setMaximumSize(QSize(16777215, 40))
-        self.SettingsBtnFrame.setCursor(QCursor(Qt.PointingHandCursor))
-        self.SettingsBtnFrame.setStyleSheet(u"QFrame::hover{\n"
-                                            "	background-color: rgb(139, 139, 207);\n"
-                                            "	color: white;\n"
-                                            "}")
-        self.SettingsBtnFrame.setFrameShape(QFrame.StyledPanel)
-        self.SettingsBtnFrame.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_7 = QHBoxLayout(self.SettingsBtnFrame)
-        self.horizontalLayout_7.setSpacing(0)
-        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.horizontalLayout_7.setContentsMargins(5, 0, 0, 0)
-        self.settingsLabel = QLabel(self.SettingsBtnFrame)
-        self.settingsLabel.setObjectName(u"settingsLabel")
-        self.settingsLabel.setMaximumSize(QSize(50, 50))
-        self.settingsLabel.setCursor(QCursor(Qt.PointingHandCursor))
-        self.settingsLabel.setStyleSheet(u"background: transparent;")
-        self.settingsLabel.setPixmap(QPixmap(u":/images/icons/settings.png"))
-        self.settingsLabel.setScaledContents(True)
-
-        self.horizontalLayout_7.addWidget(self.settingsLabel)
-
-        self.settingsBtn = QPushButton(self.SettingsBtnFrame)
+        self.settingsBtn = QPushButton(self.menuBtns)
         self.settingsBtn.setObjectName(u"settingsBtn")
-        self.settingsBtn.setMinimumSize(QSize(0, 40))
-        self.settingsBtn.setMaximumSize(QSize(200, 16777215))
-        self.settingsBtn.setFont(font3)
+        self.settingsBtn.setMinimumSize(QSize(0, 50))
+        self.settingsBtn.setFont(font4)
         self.settingsBtn.setCursor(QCursor(Qt.PointingHandCursor))
         self.settingsBtn.setStyleSheet(u"QPushButton {\n"
                                        "	color: rgb(255, 255, 255);\n"
@@ -351,9 +248,7 @@ class Ui_MainWindow(object):
                                        "	background-color: rgb(139, 139, 207)\n"
                                        "}")
 
-        self.horizontalLayout_7.addWidget(self.settingsBtn)
-
-        self.verticalLayout_5.addWidget(self.SettingsBtnFrame)
+        self.verticalLayout_5.addWidget(self.settingsBtn)
 
         self.verticalLayout_3.addWidget(self.menuBtns, 0, Qt.AlignTop)
 
@@ -393,21 +288,21 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.setContentsMargins(25, 25, 25, 25)
         self.startBtn = QPushButton(self.mainPage)
         self.startBtn.setObjectName(u"startBtn")
-        font4 = QFont()
-        font4.setFamilies([u"Maiandra GD"])
-        font4.setPointSize(30)
-        self.startBtn.setFont(font4)
+        font5 = QFont()
+        font5.setFamilies([u"Maiandra GD"])
+        font5.setPointSize(30)
+        self.startBtn.setFont(font5)
+        self.startBtn.setCursor(QCursor(Qt.PointingHandCursor))
         self.startBtn.setStyleSheet(u"QPushButton{\n"
-                                    "	background-color: black;\n"
+                                    "	background-color: rgb(48, 48, 71);\n"
                                     "	border: 2px solid white;\n"
                                     "	border-radius: 25px;\n"
                                     "	color: white;\n"
                                     "}\n"
                                     "\n"
                                     "QPushButton::hover {\n"
-                                    "  	background-color: white;\n"
-                                    "	color: black;\n"
-                                    "	widget-animation-duration: 5000;\n"
+                                    "  	background-color: rgb(139, 139, 207);\n"
+                                    "	widget-animation-duration: 400;\n"
                                     "}\n"
                                     "")
 
@@ -415,18 +310,20 @@ class Ui_MainWindow(object):
 
         self.stopBtn = QPushButton(self.mainPage)
         self.stopBtn.setObjectName(u"stopBtn")
-        self.stopBtn.setFont(font4)
+        self.stopBtn.setFont(font5)
+        self.stopBtn.setCursor(QCursor(Qt.PointingHandCursor))
         self.stopBtn.setStyleSheet(u"QPushButton{\n"
-                                   "	background-color: black;\n"
+                                   "	background-color: rgb(48, 48, 71);\n"
                                    "	border: 2px solid white;\n"
                                    "	border-radius: 25px;\n"
                                    "	color: white;\n"
                                    "}\n"
                                    "\n"
-                                   ".QPushButton::hover {\n"
-                                   "  	background-color: white;\n"
-                                   "	color: black;\n"
-                                   "}")
+                                   "QPushButton::hover {\n"
+                                   "  	background-color: rgb(139, 139, 207);\n"
+                                   "	widget-animation-duration: 400;\n"
+                                   "}\n"
+                                   "")
 
         self.verticalLayout_4.addWidget(self.stopBtn)
 
@@ -441,9 +338,9 @@ class Ui_MainWindow(object):
         self.submitBugPage = QWidget()
         self.submitBugPage.setObjectName(u"submitBugPage")
         self.stackedWidget.addWidget(self.submitBugPage)
-        self.preRequisitsPage = QWidget()
-        self.preRequisitsPage.setObjectName(u"preRequisitsPage")
-        self.stackedWidget.addWidget(self.preRequisitsPage)
+        self.preRequisitesPage = QWidget()
+        self.preRequisitesPage.setObjectName(u"preRequisitesPage")
+        self.stackedWidget.addWidget(self.preRequisitesPage)
 
         self.verticalLayout_6.addWidget(self.stackedWidget)
 
@@ -474,7 +371,7 @@ class Ui_MainWindow(object):
         self.action_Exit.setText(
             QCoreApplication.translate("MainWindow", u"&Exit", None))
         self.toggleMenuBtn.setText(
-            QCoreApplication.translate("MainWindow", u"Expand", None))
+            QCoreApplication.translate("MainWindow", u"Menu", None))
         self.label.setText(QCoreApplication.translate(
             "MainWindow", u"Valorant Map Analyser", None))
         self.bugBtn.setText(QCoreApplication.translate(
