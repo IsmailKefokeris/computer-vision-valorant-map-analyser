@@ -1,5 +1,7 @@
 # Initial Modules to setup the Main Window Class
-from PySide6 import QtCore
+from PySide6 import QtCore as qtc
+from PySide6 import QtWidgets as qtw
+
 from PySide6.QtWidgets import QMainWindow, QGraphicsDropShadowEffect
 from assets.ui_DesignThree import *
 from PySide6.QtCore import *
@@ -39,26 +41,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Set moving window functions for topBar
         self.topBar.mouseMoveEvent = self.moveWindow
 
-        ####################################################################################################
-        # Setup Page Buttons
-        ####################################################################################################
-
-        # Home Page
-        self.mainPageBtn.clicked.connect(
-            lambda: self.stackedWidget.setCurrentWidget(self.mainPage))
-
-        # Pre-Requisites Page
-        self.prerequisitesBtn.clicked.connect(
-            lambda: self.stackedWidget.setCurrentWidget(self.preRequisitesPage))
-
-        # Settings Page
-        self.settingsBtn.clicked.connect(
-            lambda: self.stackedWidget.setCurrentWidget(self.settingsPage))
-
-        # Bug Submission Page
-        self.bugBtn.clicked.connect(
-            lambda: self.stackedWidget.setCurrentWidget(self.submitBugPage))
-
     def start_capture(self):
         pass
 
@@ -67,6 +49,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def predict(self, frame):
         pass
+
+    def get_user_details(self):
+        username = self.usernameInput.text()
+        tagline = self.tagInput.text()
+        if(username and tagline):
+            full_username = f"{username}{tagline}"
+            print(full_username)
+        else:
+            print("Input Text")
 
     # Function to toggle side bar to expand or contract
     def toggleMenu(self, enable):
