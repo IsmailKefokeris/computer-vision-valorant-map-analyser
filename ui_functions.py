@@ -2,7 +2,7 @@ from PySide6.QtCore import *
 from PySide6.QtWidgets import QGraphicsDropShadowEffect
 
 # Import GUI File
-from common.gui_interface import *
+from ui.gui_interface import *
 
 
 class UIFunctions(MainWindow):

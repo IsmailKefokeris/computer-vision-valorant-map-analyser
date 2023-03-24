@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QApplication
 
-from common.gui_interface import MainWindow
+from ui.gui_interface import MainWindow
 import sys
 
 # UI Functions
