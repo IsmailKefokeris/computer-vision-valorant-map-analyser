@@ -41,6 +41,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Set moving window functions for topBar
         self.topBar.mouseMoveEvent = self.moveWindow
 
+        ####################################################################################################
+        # Settings Initialise
+        ####################################################################################################
+
+        self.get_setting_values()
+        # self.account_settings.value("Key")
+        # self.setting_variables.value("Key")
+
     def start_capture(self):
         pass
 
@@ -50,14 +58,95 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def predict(self, frame):
         pass
 
-    def get_user_details(self):
-        username = self.usernameInput.text()
-        tagline = self.tagInput.text()
+    def save_account_settings(self):
+        username = self.get_username()
+        tagline = self.get_tagline()
         if(username and tagline):
-            full_username = f"{username}{tagline}"
-            print(full_username)
+            # Save new settings to registry
+            self.set_setting_values()
+            # Update Settings Page
+            self.populate_accounts_settings()
+            # Update Error Message
+            self.saveError.setText("")
+
+        self.saveError.setText("Unable To Save Double Check Values!!")
+        return False
+
+    # Get Username From Input Function
+    def get_username(self):
+        username = self.usernameInput.text()
+        if username:
+            self.usernameError.setText("")
+            return username
+        self.usernameError.setText("Username Must be filled in")
+        return False
+
+    # Get TagLine From Input Function
+    def get_tagline(self):
+        tagline = self.tagInput.text()
+        if tagline:
+            if tagline.startswith("#", 0):
+                if len(tagline) <= 5:
+                    self.tagError.setText("")
+                    return tagline
+                self.tagError.setText(
+                    "Must be 5 characters \n long (Including #)")
+                return False
+            self.tagError.setText("Must Include `#` At the Start")
+            return False
+        self.tagError.setText("TagLine Must be filled in")
+        return False
+
+    # Get PPUID From Input Function
+    def get_ppuid(self):
+        # Generate Fake PPUID
+        self.ppuidInput.setText("0920499468938490584634623853")
+        ppuid = self.ppuidInput.text()
+        if ppuid:
+            self.ppuidError.setText("")
+            return ppuid
+        self.ppuidError.setText(
+            "Unable to Generate PPUID \n Double check Tagline and Username")
+        return False
+
+    def get_setting_values(self):
+        self.account_settings = qtc.QSettings("CV-VMA", "Account Information")
+        self.setting_variables = qtc.QSettings("CV-VMA", "Varaibles")
+        if len(self.account_settings.childKeys()) > 0:
+            self.populate_accounts_settings()
         else:
-            print("Input Text")
+            print("EMPTY")
+
+    def populate_accounts_settings(self):
+        self.usernameInput.setText(self.account_settings.value("username"))
+        self.username.setText(self.account_settings.value("full_username"))
+
+        self.tagInput.setText(self.account_settings.value("tagline"))
+        self.ppuidInput.setText(self.account_settings.value("ppuid"))
+
+        self.regionInput.setText(self.account_settings.value("region"))
+        self.shardInput.setText(self.account_settings.value("shard"))
+        self.versionInput.setText(self.account_settings.value("version"))
+
+    def set_setting_values(self):
+        # Retrieve User Information from Input Fields
+        username = self.get_username()
+        tagline = self.get_tagline()
+        ppuid = self.get_ppuid()
+        full_username = f"{username}{tagline}"
+        region = "eu"
+        shard = "eu"
+        version = "v1"
+
+        # Save all information to the settings in registry
+        self.account_settings.setValue("username", username)
+        self.account_settings.setValue("tagline", tagline)
+        self.account_settings.setValue("ppuid", ppuid)
+        self.account_settings.setValue("full_username", full_username)
+
+        self.account_settings.setValue("region", region)
+        self.account_settings.setValue("shard", shard)
+        self.account_settings.setValue("version", version)
 
     # Function to toggle side bar to expand or contract
     def toggleMenu(self, enable):
@@ -81,17 +170,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.animation.setEndValue(widthExtend)
             self.animation.start()
 
-    # Explicitly defining close event to ensure
-    # nothing is running in the background after the application is shut down
-    def closeEvent(self, event):
-        # cv.destroyAllWindows()
-
-        # Stop Capturing
-        self.capturing = False
-
-        # Close Application
-        event.accept()
-
     def mousePressEvent(self, event):
         self.dragPos = event.globalPos()
 
@@ -105,3 +183,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.move(self.x() + delta.x(), self.y() + delta.y())
             self.dragPos = event.globalPos()
             event.accept()
+
+    # Explicitly defining close event to ensure
+    # nothing is running in the background after the application is shut down
+    def closeEvent(self, event):
+        # cv.destroyAllWindows()
+
+        # Stop Capturing
+        self.capturing = False
+
+        # Close Application
+        event.accept()

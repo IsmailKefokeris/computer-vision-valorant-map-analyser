@@ -52,4 +52,5 @@ class UIFunctions(MainWindow):
         ####################################################################################################
 
         # Generate PPUID
-        self.ppuidBtn.clicked.connect(lambda: self.get_user_details())
+        self.saveSettingsBtn.clicked.connect(
+            lambda: self.save_account_settings())
