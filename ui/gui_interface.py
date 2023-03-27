@@ -16,7 +16,6 @@ import numpy as np
 
 # API's
 from api.henrikdev_api import HenrikApi
-from api.henrikdev_api_no_class import *
 
 # Modules required for Model and predictions
 import ultralytics
