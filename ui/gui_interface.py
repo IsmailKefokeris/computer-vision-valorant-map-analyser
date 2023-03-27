@@ -24,8 +24,9 @@ from ultralytics.yolo.utils.plotting import Annotator
 
 from ui.ui_functions import UIFunctions
 
-
 # Setup Main Window
+
+
 class MainWindow(QMainWindow, Ui_MainWindow, UIFunctions):
 
     def __init__(self):
@@ -189,6 +190,10 @@ class MainWindow(QMainWindow, Ui_MainWindow, UIFunctions):
 
         self.elo.setText(str(self.account_settings.value("elo")))
         self.rank.setText(str(self.account_settings.value("current_rank")))
+
+        self.set_user_image(
+            self.account_settings.value("username"),
+            self.account_settings.value("tagline"))
 
     # Function to toggle side bar to expand or contract
     def toggleMenu(self, enable):

@@ -4,6 +4,8 @@ from PySide6.QtWidgets import QGraphicsDropShadowEffect
 # Import GUI File
 from ui.gui_interface import *
 
+import requests
+
 
 class UIFunctions:
     # https://github.com/Wanderson-Magalhaes/Python_PySide2_Custom_Title_Bar/blob/master/ui_functions.py
@@ -124,6 +126,17 @@ class UIFunctions:
         rank_raw = self.henrik_api.get_elo_data(
             version, region, username, tagline)
         return rank_raw["data"]["currenttierpatched"]
+
+    def set_user_image(self, username, tagline):
+        raw_user_data = self.henrik_api.get_general_account_data(
+            username, tagline)
+        image = raw_user_data["data"]["card"]["large"]
+        request = requests.get(image)
+
+        pixmap = QPixmap()
+        pixmap.loadFromData(request.content)
+
+        self.profilePicture.setPixmap(pixmap)
 
     def set_setting_values(self):
         # Clear any previous settings
