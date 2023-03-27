@@ -4,7 +4,7 @@ from ui.gui_interface import MainWindow
 import sys
 
 # UI Functions
-from ui_functions import *
+from ui.ui_functions import *
 
 
 if __name__ == "__main__":
@@ -12,8 +12,8 @@ if __name__ == "__main__":
 
     window = MainWindow()
 
-    # Setting up UI Functions
-    UIFunctions.uiDefinitions(window)
+    # # Setting up UI Functions
+    # UIFunctions.uiDefinitions(window)
 
     window.show()
     app.exec()
