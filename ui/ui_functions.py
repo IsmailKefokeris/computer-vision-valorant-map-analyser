@@ -57,6 +57,44 @@ class UIFunctions:
         self.saveSettingsBtn.clicked.connect(
             lambda: self.save_account_settings())
 
+        ####################################################################################################
+        # Screen Capture Setup
+        ####################################################################################################
+
+        # Screen Capture Variables
+        self.screenTop = 30
+        self.screenLeft = 52
+        self.screenWidth = 320
+        self.screenHeight = 350
+
+        # Set Initial Capturing State
+        self.capturing = False
+
+        # Update the Buttons
+        self.startBtn.setEnabled(True)
+        self.stopBtn.setEnabled(False)
+
+        # Connect The Buttons to their appropriate functio
+        self.startBtn.clicked.connect(self.start_capture_thread)
+        self.stopBtn.clicked.connect(self.stop_capture)
+
+        self.screenCaptureControls.buttonClicked.connect(
+            self.screen_capture_adjustments)
+
+        # Connecting Line Edits to update Screen Capture Values
+
+        self.topValueLabel.returnPressed.connect(
+            lambda name=self.topValueLabel: self.screen_capture_adjustments_line_edit(name))
+
+        self.leftValueLabel.returnPressed.connect(
+            lambda name=self.leftValueLabel: self.screen_capture_adjustments_line_edit(name))
+
+        self.widthValueLabel.returnPressed.connect(
+            lambda name=self.widthValueLabel: self.screen_capture_adjustments_line_edit(name))
+
+        self.heightValueLabel.returnPressed.connect(
+            lambda name=self.heightValueLabel: self.screen_capture_adjustments_line_edit(name))
+
     def save_account_settings(self):
         username = self.get_username()
         tagline = self.get_tagline()
@@ -175,3 +213,59 @@ class UIFunctions:
         self.account_settings.setValue("region", region)
         self.account_settings.setValue("shard", shard)
         self.account_settings.setValue("version", version)
+
+    ####################################################################################################
+    # Screen Capture Functions
+    ####################################################################################################
+
+    def screen_capture_adjustments_line_edit(self, edit):
+        # print(edit.objectName())
+        # print(edit.text())
+        try:
+            lineEditText = int(edit.text())
+            # print(len(lineEditText))
+
+            if edit.objectName() == "topValueLabel":
+                self.screenTop = lineEditText
+
+            elif edit.objectName() == "leftValueLabel":
+                self.screenLeft = lineEditText
+
+            elif edit.objectName() == "widthValueLabel":
+                self.screenWidth = lineEditText
+
+            elif edit.objectName() == "heightValueLabel":
+                self.screenHeight = lineEditText
+
+        except ValueError:
+            print("Numbers Only No Characters (0..9)")
+
+    def screen_capture_adjustments(self, btn):
+
+        if btn.objectName() == "topPlusBtn":
+            self.screenTop += 1
+        elif btn.objectName() == "topMinusBtn":
+            self.screenTop -= 1
+
+        elif btn.objectName() == "leftPlusBtn":
+            self.screenLeft += 1
+        elif btn.objectName() == "leftMinusBtn":
+            self.screenLeft -= 1
+
+        elif btn.objectName() == "widthPlusBtn":
+            self.screenWidth += 1
+        elif btn.objectName() == "widthMinusBtn":
+            self.screenWidth -= 1
+
+        elif btn.objectName() == "heightPlusBtn":
+            self.screenHeight += 1
+        elif btn.objectName() == "heightMinusBtn":
+            self.screenHeight -= 1
+
+        self.set_screen_capture_dimensions_label()
+
+    def set_screen_capture_dimensions_label(self):
+        self.topValueLabel.setText(f"{self.screenTop}")
+        self.leftValueLabel.setText(f"{self.screenLeft}")
+        self.widthValueLabel.setText(f"{self.screenWidth}")
+        self.heightValueLabel.setText(f"{self.screenHeight}")

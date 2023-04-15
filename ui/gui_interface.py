@@ -1,4 +1,4 @@
-from threading import Thread
+# from threading import Thread
 
 # Initial Modules to setup the Main Window Class
 from PySide6 import QtCore as qtc
@@ -54,21 +54,6 @@ class MainWindow(QMainWindow, Ui_MainWindow, UIFunctions):
         self.topBar.mouseMoveEvent = self.moveWindow
 
         ####################################################################################################
-        # Screen Capture Setup
-        ####################################################################################################
-
-        # Set Initial Capturing State
-        self.capturing = False
-
-        # Update the Buttons
-        self.startBtn.setEnabled(True)
-        self.stopBtn.setEnabled(False)
-
-        # Connect The Buttons to their appropriate functio
-        self.startBtn.clicked.connect(self.start_capture_thread)
-        self.stopBtn.clicked.connect(self.stop_capture)
-
-        ####################################################################################################
         # Settings Initialise
         ####################################################################################################
 
@@ -78,14 +63,15 @@ class MainWindow(QMainWindow, Ui_MainWindow, UIFunctions):
 
     # Begin Capturing Thread
     def start_capture_thread(self):
-        self.thread = Thread(target=self.start_capture)
+        # self.thread = Thread(target=self.start_capture)
 
         # Update the Buttons
         self.startBtn.setEnabled(False)
         self.stopBtn.setEnabled(True)
         self.capturing = True
         try:
-            self.thread.start()
+            # self.thread.start()
+            self.start_capture()
         except Exception as e:
             print(e)
 
@@ -94,19 +80,43 @@ class MainWindow(QMainWindow, Ui_MainWindow, UIFunctions):
         ultralytics.checks()
 
         # Import Model Used in predicitons
+        # self.model = YOLO(
+        #     "D:/Programming/Python/trainYolov8/runs/detect/train3/weights/best.pt")
+
+        # Import Model Used in predicitons
+        # self.model = YOLO(
+        #     "D:/Programming/Python/trainYolov8PythonScript/runs/detect/train/weights/best.pt")
+
+        # Import Model Major Classes Used in predicitons
         self.model = YOLO(
-            "D:/Programming/Python/trainYolov8/runs/detect/train3/weights/best.pt")
+            r"D:\Programming\Python\trainYolov8PythonScript\runs\detect\train3\weights\best.pt")
 
         # Set Location & Size of screen capture then initialise it
-        self.mon = {'top': 0, 'left': 0, 'width': 500, 'height': 500}
+        # self.mon = {'top': 0, 'left': 0, 'width': 500, 'height': 500}
+
+        # self.mon = {'top': 55, 'left': 33, 'width': 348, 'height': 342} Ascent Map Capture
+
+        self.mon = {'top': self.screenTop, 'left': self.screenLeft,
+                    'width': self.screenWidth, 'height': self.screenHeight}
         self.sct = mss()
+
+        self.set_screen_capture_dimensions_label()
 
         # Begin Capture loop
         while self.capturing:
+            # Updating Screen Capture Area if needed
+            self.mon = {'top': self.screenTop, 'left': self.screenLeft,
+                        'width': self.screenWidth, 'height': self.screenHeight}
+
             # Grabbing the Image
             sct_img = self.sct.grab(self.mon)
+
             # Get the colours right
             frame = cv.cvtColor(np.array(sct_img), cv.COLOR_BGR2RGB)
+            # f = cv.cvtColor(np.array(sct_img), cv.COLOR_BGR2RGB)
+
+            # frame = self.crop_and_mask(frame)
+
             # Ensuring the frame is readable for qtImage and most other things really
             frame = np.array(frame)
             frame = frame[..., :3]
@@ -137,6 +147,17 @@ class MainWindow(QMainWindow, Ui_MainWindow, UIFunctions):
             if cv.waitKey(1) == ord("q"):
                 break
 
+    def crop_and_mask(self, frame):
+        # Specific To Ascent
+        map = cv.imread("ascent.png")
+        grey_map = cv.cvtColor(map, cv.COLOR_BGR2GRAY)
+        ret, binary_mask = cv.threshold(grey_map, 127, 255, cv.THRESH_BINARY)
+
+        resized_mask = cv.resize(binary_mask, (frame.shape[1], frame.shape[0]))
+
+        frame_masked = cv.bitwise_and(frame, frame, mask=resized_mask)
+        return frame_masked
+
     # Stop the Capture Process
     def stop_capture(self):
         # Stop Capturing
@@ -148,7 +169,8 @@ class MainWindow(QMainWindow, Ui_MainWindow, UIFunctions):
     # Begin the predict
     def predict(self, frame):
         # Predictions using YOLOv8
-        results = self.model.predict(source=frame, conf=0.2)
+
+        results = self.model.predict(source=frame, conf=0.8)
         # print("RES: ", results)
 
         # get Boxes and draw them
