@@ -22,6 +22,11 @@ import ultralytics
 from ultralytics import YOLO
 from ultralytics.yolo.utils.plotting import Annotator
 
+# Annotator from Supervision
+import supervision as sv
+
+from PIL import Image
+
 from ui.ui_functions import UIFunctions
 
 # Setup Main Window
@@ -89,7 +94,9 @@ class MainWindow(QMainWindow, Ui_MainWindow, UIFunctions):
 
         # Import Model Major Classes Used in predicitons
         self.model = YOLO(
-            r"D:\Programming\Python\trainYolov8PythonScript\runs\detect\train3\weights\best.pt")
+            r"models\firstLevel\train3\best.pt")
+
+        self.CLASS_NAMES_DICT = self.model.model.names
 
         # Set Location & Size of screen capture then initialise it
         # self.mon = {'top': 0, 'left': 0, 'width': 500, 'height': 500}
@@ -102,6 +109,10 @@ class MainWindow(QMainWindow, Ui_MainWindow, UIFunctions):
 
         self.set_screen_capture_dimensions_label()
 
+        # Annotator settings
+        self.box_annotator = sv.BoxAnnotator(
+            thickness=2, text_thickness=2, text_scale=1)
+
         # Begin Capture loop
         while self.capturing:
             # Updating Screen Capture Area if needed
@@ -110,6 +121,11 @@ class MainWindow(QMainWindow, Ui_MainWindow, UIFunctions):
 
             # Grabbing the Image
             sct_img = self.sct.grab(self.mon)
+
+            # rgb = Image.frombytes("RGB", sct_img.size,
+            #                       sct_img.bgra, "raw", "BGRX")
+
+            # frame = self.predict(rgb)
 
             # Get the colours right
             frame = cv.cvtColor(np.array(sct_img), cv.COLOR_BGR2RGB)
@@ -132,6 +148,7 @@ class MainWindow(QMainWindow, Ui_MainWindow, UIFunctions):
             ######################################################################################
 
             # Conduct predictions
+
             frame = self.predict(frame)
 
             # Converts the frame into an Image for QT to read using QImage
@@ -168,28 +185,57 @@ class MainWindow(QMainWindow, Ui_MainWindow, UIFunctions):
 
     # Begin the predict
     def predict(self, frame):
-        # Predictions using YOLOv8
+        try:
+            results = self.model(frame)
+            result = results[0]
 
-        results = self.model.predict(source=frame, conf=0.8)
-        # print("RES: ", results)
+            # print(type(result))
 
-        # get Boxes and draw them
-        for r in results:
+            detections = sv.Detections.from_yolov8(result)
+            # Filter out to only show Enemies
+            # Had a NP.Bool Error: https://github.com/NVIDIA/TensorRT/issues/2557
+            detections = detections[detections.class_id == 1]
 
-            annotator = Annotator(frame)
+            labels = [
+                f"{self.model.names[int(class_id)]} {confidence:0.2f}"
+                for _, confidence, class_id, _
+                in detections
+            ]
 
-            boxes = r.boxes
-            for box in boxes:
+            frame = self.box_annotator.annotate(
+                scene=frame,
+                detections=detections,
+                labels=labels)
 
-                # getting box coords (top, left, bottom, right) format
-                b = box.xyxy[0]
-                c = box.cls
+            return frame
+        except Exception as e:
+            print(e)
+            self.stop_capture()
 
-                annotator.box_label(b, self.model.names[int(c)])
+    # # Begin the predict
+    # def predict(self, frame):
+    #     # Predictions using YOLOv8
 
-        frame = annotator.result()
-        # print(frame)
-        return frame
+    #     results = self.model.predict(source=frame, conf=0.8)
+    #     # print("RES: ", results)
+
+    #     # get Boxes and draw them
+    #     for r in results:
+
+    #         annotator = Annotator(frame)
+
+    #         boxes = r.boxes
+    #         for box in boxes:
+
+    #             # getting box coords (top, left, bottom, right) format
+    #             b = box.xyxy[0]
+    #             c = box.cls
+
+    #             annotator.box_label(b, self.model.names[int(c)])
+
+    #     frame = annotator.result()
+    #     # print(frame)
+    #     return frame
 
     def get_setting_values(self):
         self.account_settings = qtc.QSettings("CV-VMA", "Account Information")
