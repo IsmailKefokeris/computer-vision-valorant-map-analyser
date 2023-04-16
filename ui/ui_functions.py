@@ -1,6 +1,16 @@
 from PySide6.QtCore import *
 from PySide6.QtWidgets import QGraphicsDropShadowEffect
 
+# Importing Modules to help with feedback sending through Emails
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
+# .env
+import os
+from dotenv import load_dotenv
+
+
 # Import GUI File
 from ui.gui_interface import *
 
@@ -12,6 +22,7 @@ class UIFunctions:
 
     # Determines What the buttons on the top bar do and how the window works
     def uiDefinitions(self):
+        load_dotenv()
         ####################################################################################################
         # Title Bar Buttons
         ####################################################################################################
@@ -94,6 +105,52 @@ class UIFunctions:
 
         self.heightValueLabel.returnPressed.connect(
             lambda name=self.heightValueLabel: self.screen_capture_adjustments_line_edit(name))
+
+        ####################################################################################################
+        # Submit a Report/Bug Page
+        ####################################################################################################
+
+        self.submitReportBtn.clicked.connect(self.submit_feedback)
+
+    def submit_feedback(self):
+        # Submit Feedback Function
+        report = self.reportType.currentText()
+        if self.reportTitle.text():
+            title = self.reportTitle.text()
+            self.reportTitleError.setText("")
+        else:
+            self.reportTitleError.setText("ERROR - Title is required")
+            return
+        if self.descriptionBox.toPlainText():
+            description = self.descriptionBox.toPlainText()
+            self.descriptionBoxError.setText("")
+        else:
+            self.descriptionBoxError.setText("ERROR - Description is required")
+            return
+
+        # Setup Email Message
+        try:
+            message = MIMEMultipart()
+            message["From"] = os.environ.get("ADMIN_EMAIL")
+            message["To"] = os.environ.get("EMAIL_RECIPIENT")
+            message["Subject"] = "Feedback from VMA Application"
+            body = f"Report Type: {report} \n Title: {title} \nFeedback: {description}"
+
+            message.attach(MIMEText(body, "plain"))
+
+            with smtplib.SMTP(os.environ.get("EMAIL_SERVER"), os.environ.get("EMAIL_PORT")) as server:
+                server.starttls()
+                server.login(os.environ.get("ADMIN_EMAIL"),
+                             os.environ.get("ADMIN_PASSWORD"))
+                server.sendmail(os.environ.get("ADMIN_EMAIL"),
+                                os.environ.get("EMAIL_RECIPIENT"), message.as_string())
+
+            self.descriptionBox.clear()
+            self.reportTitle.clear()
+            return True
+
+        except Exception as e:
+            print(e)
 
     def save_account_settings(self):
         username = self.get_username()

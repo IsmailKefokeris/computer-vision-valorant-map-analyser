@@ -16,10 +16,10 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QButtonGroup, QFrame, QGridLayout,
-    QHBoxLayout, QLabel, QLineEdit, QMainWindow,
-    QPushButton, QSizePolicy, QStackedWidget, QVBoxLayout,
-    QWidget)
+from PySide6.QtWidgets import (QApplication, QButtonGroup, QComboBox, QFrame,
+    QGridLayout, QHBoxLayout, QLabel, QLineEdit,
+    QMainWindow, QPushButton, QSizePolicy, QStackedWidget,
+    QTextEdit, QVBoxLayout, QWidget)
 import resources_rc
 
 class Ui_MainWindow(object):
@@ -879,6 +879,171 @@ class Ui_MainWindow(object):
         self.submitBugPageFrame.setObjectName(u"submitBugPageFrame")
         self.submitBugPageFrame.setFrameShape(QFrame.StyledPanel)
         self.submitBugPageFrame.setFrameShadow(QFrame.Raised)
+        self.gridLayout_4 = QGridLayout(self.submitBugPageFrame)
+        self.gridLayout_4.setObjectName(u"gridLayout_4")
+        self.pageTitle = QLabel(self.submitBugPageFrame)
+        self.pageTitle.setObjectName(u"pageTitle")
+        self.pageTitle.setMaximumSize(QSize(16777215, 50))
+        self.pageTitle.setFont(font7)
+        self.pageTitle.setStyleSheet(u"color: white;")
+
+        self.gridLayout_4.addWidget(self.pageTitle, 0, 0, 1, 4)
+
+        self.reportType = QComboBox(self.submitBugPageFrame)
+        self.reportType.addItem("")
+        self.reportType.addItem("")
+        self.reportType.addItem("")
+        self.reportType.setObjectName(u"reportType")
+        self.reportType.setMinimumSize(QSize(100, 30))
+        self.reportType.setMaximumSize(QSize(400, 30))
+        font13 = QFont()
+        font13.setFamilies([u"Cascadia Mono"])
+        font13.setBold(True)
+        self.reportType.setFont(font13)
+        self.reportType.setStyleSheet(u"\n"
+"#reportType {\n"
+"	border: 1px solid rgb(255, 255, 255);\n"
+"	border-radius: 12px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(68, 68, 102);\n"
+"	padding-left: 5px;\n"
+"	padding-right: 20px;\n"
+"}\n"
+"\n"
+"#reportType::drop-down{\n"
+"	border:0px;\n"
+"	color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"#reportType::down-arrow{\n"
+"	image: url(:/assets/images/icons/arrowDown.png);\n"
+"	width: 16px;\n"
+"	height: 16px;\n"
+"	margin-right: 15px;\n"
+"}\n"
+"\n"
+"#reportType QListView{\n"
+"	color: rgb(255, 255, 255);\n"
+"	font-size: 9px;\n"
+"}\n"
+"")
+
+        self.gridLayout_4.addWidget(self.reportType, 1, 1, 1, 3)
+
+        self.reportTypeLabel = QLabel(self.submitBugPageFrame)
+        self.reportTypeLabel.setObjectName(u"reportTypeLabel")
+        self.reportTypeLabel.setMinimumSize(QSize(100, 20))
+        self.reportTypeLabel.setMaximumSize(QSize(100, 20))
+        font14 = QFont()
+        font14.setFamilies([u"Cascadia Mono SemiBold"])
+        font14.setPointSize(12)
+        font14.setBold(True)
+        self.reportTypeLabel.setFont(font14)
+        self.reportTypeLabel.setStyleSheet(u"color: white;")
+
+        self.gridLayout_4.addWidget(self.reportTypeLabel, 1, 0, 1, 1)
+
+        self.descriptionLabel = QLabel(self.submitBugPageFrame)
+        self.descriptionLabel.setObjectName(u"descriptionLabel")
+        self.descriptionLabel.setMinimumSize(QSize(115, 20))
+        self.descriptionLabel.setMaximumSize(QSize(115, 20))
+        self.descriptionLabel.setFont(font14)
+        self.descriptionLabel.setStyleSheet(u"color: white;")
+
+        self.gridLayout_4.addWidget(self.descriptionLabel, 3, 0, 1, 1)
+
+        self.reportTitle = QLineEdit(self.submitBugPageFrame)
+        self.reportTitle.setObjectName(u"reportTitle")
+        self.reportTitle.setMinimumSize(QSize(100, 30))
+        self.reportTitle.setMaximumSize(QSize(200, 30))
+        self.reportTitle.setFont(font6)
+        self.reportTitle.setStyleSheet(u"border: 1px solid rgb(255, 255, 255);\n"
+"border-radius: 12px;\n"
+"color: rgb(255, 255, 255);\n"
+"background-color: rgb(68, 68, 102);\n"
+"padding-left: 5px;\n"
+"padding-right: 20px;\n"
+"\n"
+"\n"
+"")
+
+        self.gridLayout_4.addWidget(self.reportTitle, 2, 1, 1, 1)
+
+        self.reportTitleLabel = QLabel(self.submitBugPageFrame)
+        self.reportTitleLabel.setObjectName(u"reportTitleLabel")
+        self.reportTitleLabel.setMinimumSize(QSize(100, 20))
+        self.reportTitleLabel.setMaximumSize(QSize(100, 20))
+        self.reportTitleLabel.setFont(font14)
+        self.reportTitleLabel.setStyleSheet(u"color: white;")
+
+        self.gridLayout_4.addWidget(self.reportTitleLabel, 2, 0, 1, 1)
+
+        self.submitReportBtn = QPushButton(self.submitBugPageFrame)
+        self.submitReportBtn.setObjectName(u"submitReportBtn")
+        self.submitReportBtn.setMinimumSize(QSize(130, 30))
+        self.submitReportBtn.setMaximumSize(QSize(130, 30))
+        self.submitReportBtn.setFont(font10)
+        self.submitReportBtn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.submitReportBtn.setStyleSheet(u"QPushButton {\n"
+"	color: rgb(255, 255, 255);\n"
+"	background: transparent;\n"
+"	border: 0px solid;\n"
+"	border-radius: 15px;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(139, 139, 207)\n"
+"}")
+
+        self.gridLayout_4.addWidget(self.submitReportBtn, 6, 2, 1, 1)
+
+        self.descriptionBox = QTextEdit(self.submitBugPageFrame)
+        self.descriptionBox.setObjectName(u"descriptionBox")
+        self.descriptionBox.setMaximumSize(QSize(520, 230))
+        self.descriptionBox.setFont(font6)
+        self.descriptionBox.setStyleSheet(u"#descriptionBox{\n"
+"	border: 1px solid rgb(255, 255, 255);\n"
+"	border-radius: 12px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(68, 68, 102);\n"
+"	padding-left: 5px;\n"
+"	padding-right: 20px;\n"
+"}\n"
+"\n"
+"#descriptionBox::handle::vertical{\n"
+"	min-height:30px;\n"
+"	border-radius: 7px;\n"
+"}\n"
+"")
+        self.descriptionBox.setLineWrapMode(QTextEdit.FixedColumnWidth)
+        self.descriptionBox.setLineWrapColumnOrWidth(50)
+
+        self.gridLayout_4.addWidget(self.descriptionBox, 5, 0, 1, 4)
+
+        self.descriptionText = QLabel(self.submitBugPageFrame)
+        self.descriptionText.setObjectName(u"descriptionText")
+        self.descriptionText.setMinimumSize(QSize(0, 30))
+        self.descriptionText.setMaximumSize(QSize(520, 30))
+        self.descriptionText.setFont(font6)
+        self.descriptionText.setStyleSheet(u"color: white;")
+        self.descriptionText.setScaledContents(False)
+        self.descriptionText.setWordWrap(True)
+
+        self.gridLayout_4.addWidget(self.descriptionText, 4, 0, 1, 4)
+
+        self.descriptionBoxError = QLabel(self.submitBugPageFrame)
+        self.descriptionBoxError.setObjectName(u"descriptionBoxError")
+        self.descriptionBoxError.setStyleSheet(u"color:red;")
+
+        self.gridLayout_4.addWidget(self.descriptionBoxError, 3, 1, 1, 1)
+
+        self.reportTitleError = QLabel(self.submitBugPageFrame)
+        self.reportTitleError.setObjectName(u"reportTitleError")
+        self.reportTitleError.setStyleSheet(u"color:red;")
+
+        self.gridLayout_4.addWidget(self.reportTitleError, 2, 2, 1, 1)
+
 
         self.verticalLayout_7.addWidget(self.submitBugPageFrame)
 
@@ -922,7 +1087,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -995,5 +1160,18 @@ class Ui_MainWindow(object):
         self.rankLabel.setText(QCoreApplication.translate("MainWindow", u"Current Rank:", None))
         self.rank.setText("")
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Update Profile", None))
+        self.pageTitle.setText(QCoreApplication.translate("MainWindow", u"Issue Reporter", None))
+        self.reportType.setItemText(0, QCoreApplication.translate("MainWindow", u"Bug Report", None))
+        self.reportType.setItemText(1, QCoreApplication.translate("MainWindow", u"Feature Request", None))
+        self.reportType.setItemText(2, QCoreApplication.translate("MainWindow", u"Performance Issue", None))
+
+        self.reportTypeLabel.setText(QCoreApplication.translate("MainWindow", u"This is a", None))
+        self.descriptionLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Description<span style=\" color:#ff0000;\">*</span></p></body></html>", None))
+        self.reportTitleLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Title<span style=\" color:#ff0000;\">*</span></p></body></html>", None))
+        self.submitReportBtn.setText(QCoreApplication.translate("MainWindow", u"Submit", None))
+        self.descriptionBox.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Describe Steps to replicate or what feature you want!", None))
+        self.descriptionText.setText(QCoreApplication.translate("MainWindow", u"If applicable how would I replicate/reproduce what you did to have the same problem?", None))
+        self.descriptionBoxError.setText("")
+        self.reportTitleError.setText("")
     # retranslateUi
 

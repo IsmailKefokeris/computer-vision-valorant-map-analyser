@@ -5,7 +5,7 @@ from PySide6 import QtCore as qtc
 from PySide6 import QtWidgets as qtw
 
 from PySide6.QtWidgets import QMainWindow, QGraphicsDropShadowEffect
-from assets.ui_DesignThree import *
+from assets.DesignThree_ui import *
 from PySide6.QtCore import *
 from PySide6.QtGui import QPixmap, QImage
 
