@@ -16,10 +16,10 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QButtonGroup, QComboBox, QFrame,
-    QGridLayout, QHBoxLayout, QLabel, QLineEdit,
-    QMainWindow, QPushButton, QSizePolicy, QStackedWidget,
-    QTextEdit, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QButtonGroup, QCheckBox, QComboBox,
+    QFrame, QGridLayout, QHBoxLayout, QLabel,
+    QLineEdit, QMainWindow, QPushButton, QSizePolicy,
+    QStackedWidget, QTextEdit, QVBoxLayout, QWidget)
 import resources_rc
 
 class Ui_MainWindow(object):
@@ -269,19 +269,37 @@ class Ui_MainWindow(object):
         self.mainPage.setMaximumSize(QSize(1280, 16777215))
         self.gridLayout_3 = QGridLayout(self.mainPage)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.leftPlusBtn = QPushButton(self.mainPage)
+        self.widthValueLabel = QLineEdit(self.mainPage)
+        self.widthValueLabel.setObjectName(u"widthValueLabel")
+        self.widthValueLabel.setMinimumSize(QSize(84, 25))
+        self.widthValueLabel.setMaximumSize(QSize(84, 25))
+        font5 = QFont()
+        font5.setFamilies([u"Cascadia Mono"])
+        self.widthValueLabel.setFont(font5)
+
+        self.gridLayout_3.addWidget(self.widthValueLabel, 1, 4, 1, 1)
+
+        self.heightValueLabel = QLineEdit(self.mainPage)
+        self.heightValueLabel.setObjectName(u"heightValueLabel")
+        self.heightValueLabel.setMinimumSize(QSize(84, 25))
+        self.heightValueLabel.setMaximumSize(QSize(84, 25))
+        self.heightValueLabel.setFont(font5)
+
+        self.gridLayout_3.addWidget(self.heightValueLabel, 1, 5, 1, 1)
+
+        self.widthPlusBtn = QPushButton(self.mainPage)
         self.screenCaptureControls = QButtonGroup(MainWindow)
         self.screenCaptureControls.setObjectName(u"screenCaptureControls")
-        self.screenCaptureControls.addButton(self.leftPlusBtn)
-        self.leftPlusBtn.setObjectName(u"leftPlusBtn")
-        self.leftPlusBtn.setMinimumSize(QSize(84, 24))
-        self.leftPlusBtn.setMaximumSize(QSize(84, 16777215))
-        font5 = QFont()
-        font5.setFamilies([u"Cascadia Mono SemiBold"])
-        font5.setPointSize(12)
-        self.leftPlusBtn.setFont(font5)
-        self.leftPlusBtn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.leftPlusBtn.setStyleSheet(u"QPushButton{\n"
+        self.screenCaptureControls.addButton(self.widthPlusBtn)
+        self.widthPlusBtn.setObjectName(u"widthPlusBtn")
+        self.widthPlusBtn.setMinimumSize(QSize(84, 24))
+        self.widthPlusBtn.setMaximumSize(QSize(84, 16777215))
+        font6 = QFont()
+        font6.setFamilies([u"Cascadia Mono SemiBold"])
+        font6.setPointSize(12)
+        self.widthPlusBtn.setFont(font6)
+        self.widthPlusBtn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.widthPlusBtn.setStyleSheet(u"QPushButton{\n"
 "	background-color: rgb(48, 48, 71);\n"
 "	border: 2px solid white;\n"
 "	border-radius: 10px;\n"
@@ -297,14 +315,14 @@ class Ui_MainWindow(object):
 "}\n"
 "")
 
-        self.gridLayout_3.addWidget(self.leftPlusBtn, 2, 3, 1, 1)
+        self.gridLayout_3.addWidget(self.widthPlusBtn, 2, 4, 1, 1)
 
         self.heightMinusBtn = QPushButton(self.mainPage)
         self.screenCaptureControls.addButton(self.heightMinusBtn)
         self.heightMinusBtn.setObjectName(u"heightMinusBtn")
         self.heightMinusBtn.setMinimumSize(QSize(84, 24))
         self.heightMinusBtn.setMaximumSize(QSize(84, 16777215))
-        self.heightMinusBtn.setFont(font5)
+        self.heightMinusBtn.setFont(font6)
         self.heightMinusBtn.setCursor(QCursor(Qt.PointingHandCursor))
         self.heightMinusBtn.setStyleSheet(u"QPushButton{\n"
 "	background-color: rgb(48, 48, 71);\n"
@@ -324,12 +342,20 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addWidget(self.heightMinusBtn, 4, 5, 1, 1)
 
+        self.topValueLabel = QLineEdit(self.mainPage)
+        self.topValueLabel.setObjectName(u"topValueLabel")
+        self.topValueLabel.setMinimumSize(QSize(84, 25))
+        self.topValueLabel.setMaximumSize(QSize(84, 25))
+        self.topValueLabel.setFont(font5)
+
+        self.gridLayout_3.addWidget(self.topValueLabel, 1, 2, 1, 1)
+
         self.topPlusBtn = QPushButton(self.mainPage)
         self.screenCaptureControls.addButton(self.topPlusBtn)
         self.topPlusBtn.setObjectName(u"topPlusBtn")
         self.topPlusBtn.setMinimumSize(QSize(84, 24))
         self.topPlusBtn.setMaximumSize(QSize(84, 16777215))
-        self.topPlusBtn.setFont(font5)
+        self.topPlusBtn.setFont(font6)
         self.topPlusBtn.setCursor(QCursor(Qt.PointingHandCursor))
         self.topPlusBtn.setStyleSheet(u"QPushButton{\n"
 "	background-color: rgb(48, 48, 71);\n"
@@ -349,23 +375,15 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addWidget(self.topPlusBtn, 2, 2, 1, 1)
 
-        self.heightValueLabel = QLineEdit(self.mainPage)
-        self.heightValueLabel.setObjectName(u"heightValueLabel")
-        self.heightValueLabel.setMinimumSize(QSize(84, 25))
-        self.heightValueLabel.setMaximumSize(QSize(84, 25))
-        font6 = QFont()
-        font6.setFamilies([u"Cascadia Mono"])
-        self.heightValueLabel.setFont(font6)
+        self.screenCaptureLabel = QLabel(self.mainPage)
+        self.screenCaptureLabel.setObjectName(u"screenCaptureLabel")
+        self.screenCaptureLabel.setMinimumSize(QSize(500, 500))
+        self.screenCaptureLabel.setMaximumSize(QSize(500, 500))
+        self.screenCaptureLabel.setTextFormat(Qt.MarkdownText)
+        self.screenCaptureLabel.setPixmap(QPixmap(u":/assets/images/placeholder.PNG"))
+        self.screenCaptureLabel.setScaledContents(True)
 
-        self.gridLayout_3.addWidget(self.heightValueLabel, 1, 5, 1, 1)
-
-        self.leftValueLabel = QLineEdit(self.mainPage)
-        self.leftValueLabel.setObjectName(u"leftValueLabel")
-        self.leftValueLabel.setMinimumSize(QSize(84, 25))
-        self.leftValueLabel.setMaximumSize(QSize(84, 25))
-        self.leftValueLabel.setFont(font6)
-
-        self.gridLayout_3.addWidget(self.leftValueLabel, 1, 3, 1, 1)
+        self.gridLayout_3.addWidget(self.screenCaptureLabel, 0, 0, 1, 2)
 
         self.stopBtn = QPushButton(self.mainPage)
         self.stopBtn.setObjectName(u"stopBtn")
@@ -394,14 +412,166 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addWidget(self.stopBtn, 2, 1, 1, 1)
 
-        self.widthPlusBtn = QPushButton(self.mainPage)
-        self.screenCaptureControls.addButton(self.widthPlusBtn)
-        self.widthPlusBtn.setObjectName(u"widthPlusBtn")
-        self.widthPlusBtn.setMinimumSize(QSize(84, 24))
-        self.widthPlusBtn.setMaximumSize(QSize(84, 16777215))
-        self.widthPlusBtn.setFont(font5)
-        self.widthPlusBtn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.widthPlusBtn.setStyleSheet(u"QPushButton{\n"
+        self.classSelectorFrame = QFrame(self.mainPage)
+        self.classSelectorFrame.setObjectName(u"classSelectorFrame")
+        self.classSelectorFrame.setStyleSheet(u"#classSelectorFrame{\n"
+"	max-width: 515px;\n"
+"	max-height:500px;\n"
+"	min-width: 250px;\n"
+"	min-height:500px;\n"
+"	border: 2px solid rgb(255, 255, 255);\n"
+"	border-radius: 35px;\n"
+"}")
+        self.classSelectorFrame.setFrameShape(QFrame.StyledPanel)
+        self.classSelectorFrame.setFrameShadow(QFrame.Raised)
+        self.gridLayout_5 = QGridLayout(self.classSelectorFrame)
+        self.gridLayout_5.setObjectName(u"gridLayout_5")
+        self.gridLayout_5.setHorizontalSpacing(10)
+        self.gridLayout_5.setVerticalSpacing(0)
+        self.gridLayout_5.setContentsMargins(10, 0, 5, 0)
+        self.enemiesCheckBox = QCheckBox(self.classSelectorFrame)
+        self.enemiesCheckBox.setObjectName(u"enemiesCheckBox")
+        self.enemiesCheckBox.setStyleSheet(u"#enemiesCheckBox{\n"
+"	font: 10pt \"Cascadia Mono\";\n"
+"	color: rgb(255, 255, 255);\n"
+"	max-width: 150px;\n"
+"	max-height: 20px;\n"
+"	min-width: 150px;\n"
+"	min-height: 20px;\n"
+"}")
+
+        self.gridLayout_5.addWidget(self.enemiesCheckBox, 7, 0, 1, 1)
+
+        self.enemiesDeadCheckBox = QCheckBox(self.classSelectorFrame)
+        self.enemiesDeadCheckBox.setObjectName(u"enemiesDeadCheckBox")
+        self.enemiesDeadCheckBox.setStyleSheet(u"#enemiesDeadCheckBox{\n"
+"	font: 10pt \"Cascadia Mono\";\n"
+"	color: rgb(255, 255, 255);\n"
+"	max-width: 150px;\n"
+"	max-height: 20px;\n"
+"	min-width: 150px;\n"
+"	min-height: 20px;\n"
+"}")
+
+        self.gridLayout_5.addWidget(self.enemiesDeadCheckBox, 11, 0, 1, 1)
+
+        self.friendliesCheckBox = QCheckBox(self.classSelectorFrame)
+        self.friendliesCheckBox.setObjectName(u"friendliesCheckBox")
+        self.friendliesCheckBox.setStyleSheet(u"#friendliesCheckBox{\n"
+"	font: 10pt \"Cascadia Mono\";\n"
+"	color: rgb(255, 255, 255);\n"
+"	max-width: 150px;\n"
+"	max-height: 20px;\n"
+"	min-width: 150px;\n"
+"	min-height: 20px;\n"
+"}")
+
+        self.gridLayout_5.addWidget(self.friendliesCheckBox, 6, 1, 1, 1)
+
+        self.lastSeenCheckBox = QCheckBox(self.classSelectorFrame)
+        self.lastSeenCheckBox.setObjectName(u"lastSeenCheckBox")
+        self.lastSeenCheckBox.setStyleSheet(u"#lastSeenCheckBox{\n"
+"	font: 10pt \"Cascadia Mono\";\n"
+"	color: rgb(255, 255, 255);\n"
+"	max-width: 150px;\n"
+"	max-height: 20px;\n"
+"	min-width: 150px;\n"
+"	min-height: 20px;\n"
+"}")
+
+        self.gridLayout_5.addWidget(self.lastSeenCheckBox, 11, 2, 1, 1)
+
+        self.spikePlantedCheckBox = QCheckBox(self.classSelectorFrame)
+        self.spikePlantedCheckBox.setObjectName(u"spikePlantedCheckBox")
+        self.spikePlantedCheckBox.setStyleSheet(u"#spikePlantedCheckBox{\n"
+"	font: 10pt \"Cascadia Mono\";\n"
+"	color: rgb(255, 255, 255);\n"
+"	max-width: 150px;\n"
+"	max-height: 20px;\n"
+"	min-width: 150px;\n"
+"	min-height: 20px;\n"
+"}")
+
+        self.gridLayout_5.addWidget(self.spikePlantedCheckBox, 6, 2, 1, 1)
+
+        self.playersCheckBox = QCheckBox(self.classSelectorFrame)
+        self.playersCheckBox.setObjectName(u"playersCheckBox")
+        self.playersCheckBox.setStyleSheet(u"#playersCheckBox{\n"
+"	font: 10pt \"Cascadia Mono\";\n"
+"	color: rgb(255, 255, 255);\n"
+"	max-width: 150px;\n"
+"	max-height: 20px;\n"
+"	min-width: 150px;\n"
+"	min-height: 20px;\n"
+"}")
+        self.playersCheckBox.setChecked(True)
+
+        self.gridLayout_5.addWidget(self.playersCheckBox, 6, 0, 1, 1)
+
+        self.spikeCheckBox = QCheckBox(self.classSelectorFrame)
+        self.spikeCheckBox.setObjectName(u"spikeCheckBox")
+        self.spikeCheckBox.setStyleSheet(u"#spikeCheckBox{\n"
+"	font: 10pt \"Cascadia Mono\";\n"
+"	color: rgb(255, 255, 255);\n"
+"	max-width: 150px;\n"
+"	max-height: 20px;\n"
+"	min-width: 150px;\n"
+"	min-height: 20px;\n"
+"}")
+
+        self.gridLayout_5.addWidget(self.spikeCheckBox, 7, 1, 1, 1)
+
+        self.classesSelectorLabel = QLabel(self.classSelectorFrame)
+        self.classesSelectorLabel.setObjectName(u"classesSelectorLabel")
+        self.classesSelectorLabel.setStyleSheet(u"#classesSelectorLabel{\n"
+"	font: 25pt \"Cascadia Mono\";\n"
+"	color: rgb(255, 255, 255);\n"
+"	max-height: 50px;\n"
+"	min-width: 350px;\n"
+"	min-height: 50px;\n"
+"}")
+        self.classesSelectorLabel.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout_5.addWidget(self.classesSelectorLabel, 3, 0, 1, 3)
+
+        self.friendliesDeadCheckBox = QCheckBox(self.classSelectorFrame)
+        self.friendliesDeadCheckBox.setObjectName(u"friendliesDeadCheckBox")
+        self.friendliesDeadCheckBox.setStyleSheet(u"#friendliesDeadCheckBox{\n"
+"	font: 10pt \"Cascadia Mono\";\n"
+"	color: rgb(255, 255, 255);\n"
+"	max-width: 150px;\n"
+"	max-height: 20px;\n"
+"	min-width: 150px;\n"
+"	min-height: 20px;\n"
+"}")
+
+        self.gridLayout_5.addWidget(self.friendliesDeadCheckBox, 7, 2, 1, 1)
+
+        self.checkBoxDescriptionLabel = QLabel(self.classSelectorFrame)
+        self.checkBoxDescriptionLabel.setObjectName(u"checkBoxDescriptionLabel")
+        self.checkBoxDescriptionLabel.setStyleSheet(u"#checkBoxDescriptionLabel{\n"
+"	font: 10pt \"Cascadia Mono\";\n"
+"	color: rgb(255, 255, 255);\n"
+"	max-width: 350px;\n"
+"	max-height: 40px;\n"
+"	min-width: 350px;\n"
+"	min-height: 40px;\n"
+"}")
+        self.checkBoxDescriptionLabel.setWordWrap(True)
+
+        self.gridLayout_5.addWidget(self.checkBoxDescriptionLabel, 5, 0, 1, 1)
+
+
+        self.gridLayout_3.addWidget(self.classSelectorFrame, 0, 2, 1, 4)
+
+        self.widthMinusBtn = QPushButton(self.mainPage)
+        self.screenCaptureControls.addButton(self.widthMinusBtn)
+        self.widthMinusBtn.setObjectName(u"widthMinusBtn")
+        self.widthMinusBtn.setMinimumSize(QSize(84, 24))
+        self.widthMinusBtn.setMaximumSize(QSize(84, 16777215))
+        self.widthMinusBtn.setFont(font6)
+        self.widthMinusBtn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.widthMinusBtn.setStyleSheet(u"QPushButton{\n"
 "	background-color: rgb(48, 48, 71);\n"
 "	border: 2px solid white;\n"
 "	border-radius: 10px;\n"
@@ -417,15 +587,90 @@ class Ui_MainWindow(object):
 "}\n"
 "")
 
-        self.gridLayout_3.addWidget(self.widthPlusBtn, 2, 4, 1, 1)
+        self.gridLayout_3.addWidget(self.widthMinusBtn, 4, 4, 1, 1)
 
-        self.widthValueLabel = QLineEdit(self.mainPage)
-        self.widthValueLabel.setObjectName(u"widthValueLabel")
-        self.widthValueLabel.setMinimumSize(QSize(84, 25))
-        self.widthValueLabel.setMaximumSize(QSize(84, 25))
-        self.widthValueLabel.setFont(font6)
+        self.leftValueLabel = QLineEdit(self.mainPage)
+        self.leftValueLabel.setObjectName(u"leftValueLabel")
+        self.leftValueLabel.setMinimumSize(QSize(84, 25))
+        self.leftValueLabel.setMaximumSize(QSize(84, 25))
+        self.leftValueLabel.setFont(font5)
 
-        self.gridLayout_3.addWidget(self.widthValueLabel, 1, 4, 1, 1)
+        self.gridLayout_3.addWidget(self.leftValueLabel, 1, 3, 1, 1)
+
+        self.leftPlusBtn = QPushButton(self.mainPage)
+        self.screenCaptureControls.addButton(self.leftPlusBtn)
+        self.leftPlusBtn.setObjectName(u"leftPlusBtn")
+        self.leftPlusBtn.setMinimumSize(QSize(84, 24))
+        self.leftPlusBtn.setMaximumSize(QSize(84, 16777215))
+        self.leftPlusBtn.setFont(font6)
+        self.leftPlusBtn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.leftPlusBtn.setStyleSheet(u"QPushButton{\n"
+"	background-color: rgb(48, 48, 71);\n"
+"	border: 2px solid white;\n"
+"	border-radius: 10px;\n"
+"	color: white;\n"
+"	min-width: 80px;\n"
+"	max-width: 80px;\n"
+"	min-height: 20px;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"  	background-color: rgb(139, 139, 207);\n"
+"	widget-animation-duration: 400;\n"
+"}\n"
+"")
+
+        self.gridLayout_3.addWidget(self.leftPlusBtn, 2, 3, 1, 1)
+
+        self.leftMinusBtn = QPushButton(self.mainPage)
+        self.screenCaptureControls.addButton(self.leftMinusBtn)
+        self.leftMinusBtn.setObjectName(u"leftMinusBtn")
+        self.leftMinusBtn.setMinimumSize(QSize(84, 24))
+        self.leftMinusBtn.setMaximumSize(QSize(84, 16777215))
+        self.leftMinusBtn.setFont(font6)
+        self.leftMinusBtn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.leftMinusBtn.setStyleSheet(u"QPushButton{\n"
+"	background-color: rgb(48, 48, 71);\n"
+"	border: 2px solid white;\n"
+"	border-radius: 10px;\n"
+"	color: white;\n"
+"	min-width: 80px;\n"
+"	max-width: 80px;\n"
+"	min-height: 20px;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"  	background-color: rgb(139, 139, 207);\n"
+"	widget-animation-duration: 400;\n"
+"}\n"
+"")
+
+        self.gridLayout_3.addWidget(self.leftMinusBtn, 4, 3, 1, 1)
+
+        self.heightPlusBtn = QPushButton(self.mainPage)
+        self.screenCaptureControls.addButton(self.heightPlusBtn)
+        self.heightPlusBtn.setObjectName(u"heightPlusBtn")
+        self.heightPlusBtn.setMinimumSize(QSize(84, 24))
+        self.heightPlusBtn.setMaximumSize(QSize(84, 16777215))
+        self.heightPlusBtn.setFont(font6)
+        self.heightPlusBtn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.heightPlusBtn.setStyleSheet(u"QPushButton{\n"
+"	background-color: rgb(48, 48, 71);\n"
+"	border: 2px solid white;\n"
+"	border-radius: 10px;\n"
+"	color: white;\n"
+"	min-width: 80px;\n"
+"	max-width: 80px;\n"
+"	min-height: 20px;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"  	background-color: rgb(139, 139, 207);\n"
+"	widget-animation-duration: 400;\n"
+"}\n"
+"")
+
+        self.gridLayout_3.addWidget(self.heightPlusBtn, 2, 5, 1, 1)
 
         self.startBtn = QPushButton(self.mainPage)
         self.startBtn.setObjectName(u"startBtn")
@@ -451,62 +696,12 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addWidget(self.startBtn, 2, 0, 1, 1)
 
-        self.leftMinusBtn = QPushButton(self.mainPage)
-        self.screenCaptureControls.addButton(self.leftMinusBtn)
-        self.leftMinusBtn.setObjectName(u"leftMinusBtn")
-        self.leftMinusBtn.setMinimumSize(QSize(84, 24))
-        self.leftMinusBtn.setMaximumSize(QSize(84, 16777215))
-        self.leftMinusBtn.setFont(font5)
-        self.leftMinusBtn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.leftMinusBtn.setStyleSheet(u"QPushButton{\n"
-"	background-color: rgb(48, 48, 71);\n"
-"	border: 2px solid white;\n"
-"	border-radius: 10px;\n"
-"	color: white;\n"
-"	min-width: 80px;\n"
-"	max-width: 80px;\n"
-"	min-height: 20px;\n"
-"}\n"
-"\n"
-"QPushButton::hover {\n"
-"  	background-color: rgb(139, 139, 207);\n"
-"	widget-animation-duration: 400;\n"
-"}\n"
-"")
-
-        self.gridLayout_3.addWidget(self.leftMinusBtn, 4, 3, 1, 1)
-
-        self.widthMinusBtn = QPushButton(self.mainPage)
-        self.screenCaptureControls.addButton(self.widthMinusBtn)
-        self.widthMinusBtn.setObjectName(u"widthMinusBtn")
-        self.widthMinusBtn.setMinimumSize(QSize(84, 24))
-        self.widthMinusBtn.setMaximumSize(QSize(84, 16777215))
-        self.widthMinusBtn.setFont(font5)
-        self.widthMinusBtn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.widthMinusBtn.setStyleSheet(u"QPushButton{\n"
-"	background-color: rgb(48, 48, 71);\n"
-"	border: 2px solid white;\n"
-"	border-radius: 10px;\n"
-"	color: white;\n"
-"	min-width: 80px;\n"
-"	max-width: 80px;\n"
-"	min-height: 20px;\n"
-"}\n"
-"\n"
-"QPushButton::hover {\n"
-"  	background-color: rgb(139, 139, 207);\n"
-"	widget-animation-duration: 400;\n"
-"}\n"
-"")
-
-        self.gridLayout_3.addWidget(self.widthMinusBtn, 4, 4, 1, 1)
-
         self.topMinusBtn = QPushButton(self.mainPage)
         self.screenCaptureControls.addButton(self.topMinusBtn)
         self.topMinusBtn.setObjectName(u"topMinusBtn")
         self.topMinusBtn.setMinimumSize(QSize(84, 24))
         self.topMinusBtn.setMaximumSize(QSize(84, 16777215))
-        self.topMinusBtn.setFont(font5)
+        self.topMinusBtn.setFont(font6)
         self.topMinusBtn.setCursor(QCursor(Qt.PointingHandCursor))
         self.topMinusBtn.setStyleSheet(u"QPushButton{\n"
 "	background-color: rgb(48, 48, 71);\n"
@@ -525,49 +720,6 @@ class Ui_MainWindow(object):
 "")
 
         self.gridLayout_3.addWidget(self.topMinusBtn, 4, 2, 1, 1)
-
-        self.topValueLabel = QLineEdit(self.mainPage)
-        self.topValueLabel.setObjectName(u"topValueLabel")
-        self.topValueLabel.setMinimumSize(QSize(84, 25))
-        self.topValueLabel.setMaximumSize(QSize(84, 25))
-        self.topValueLabel.setFont(font6)
-
-        self.gridLayout_3.addWidget(self.topValueLabel, 1, 2, 1, 1)
-
-        self.screenCaptureLabel = QLabel(self.mainPage)
-        self.screenCaptureLabel.setObjectName(u"screenCaptureLabel")
-        self.screenCaptureLabel.setMinimumSize(QSize(500, 500))
-        self.screenCaptureLabel.setMaximumSize(QSize(500, 500))
-        self.screenCaptureLabel.setTextFormat(Qt.MarkdownText)
-        self.screenCaptureLabel.setPixmap(QPixmap(u":/assets/images/placeholder.PNG"))
-        self.screenCaptureLabel.setScaledContents(True)
-
-        self.gridLayout_3.addWidget(self.screenCaptureLabel, 0, 0, 1, 2)
-
-        self.heightPlusBtn = QPushButton(self.mainPage)
-        self.screenCaptureControls.addButton(self.heightPlusBtn)
-        self.heightPlusBtn.setObjectName(u"heightPlusBtn")
-        self.heightPlusBtn.setMinimumSize(QSize(84, 24))
-        self.heightPlusBtn.setMaximumSize(QSize(84, 16777215))
-        self.heightPlusBtn.setFont(font5)
-        self.heightPlusBtn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.heightPlusBtn.setStyleSheet(u"QPushButton{\n"
-"	background-color: rgb(48, 48, 71);\n"
-"	border: 2px solid white;\n"
-"	border-radius: 10px;\n"
-"	color: white;\n"
-"	min-width: 80px;\n"
-"	max-width: 80px;\n"
-"	min-height: 20px;\n"
-"}\n"
-"\n"
-"QPushButton::hover {\n"
-"  	background-color: rgb(139, 139, 207);\n"
-"	widget-animation-duration: 400;\n"
-"}\n"
-"")
-
-        self.gridLayout_3.addWidget(self.heightPlusBtn, 2, 5, 1, 1)
 
         self.stackedWidget.addWidget(self.mainPage)
         self.accountSettingsPage = QWidget()
@@ -956,7 +1108,7 @@ class Ui_MainWindow(object):
         self.reportTitle.setObjectName(u"reportTitle")
         self.reportTitle.setMinimumSize(QSize(100, 30))
         self.reportTitle.setMaximumSize(QSize(200, 30))
-        self.reportTitle.setFont(font6)
+        self.reportTitle.setFont(font5)
         self.reportTitle.setStyleSheet(u"border: 1px solid rgb(255, 255, 255);\n"
 "border-radius: 12px;\n"
 "color: rgb(255, 255, 255);\n"
@@ -980,28 +1132,32 @@ class Ui_MainWindow(object):
 
         self.submitReportBtn = QPushButton(self.submitBugPageFrame)
         self.submitReportBtn.setObjectName(u"submitReportBtn")
-        self.submitReportBtn.setMinimumSize(QSize(130, 30))
-        self.submitReportBtn.setMaximumSize(QSize(130, 30))
+        self.submitReportBtn.setMinimumSize(QSize(174, 44))
+        self.submitReportBtn.setMaximumSize(QSize(174, 30))
         self.submitReportBtn.setFont(font10)
         self.submitReportBtn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.submitReportBtn.setStyleSheet(u"QPushButton {\n"
-"	color: rgb(255, 255, 255);\n"
-"	background: transparent;\n"
-"	border: 0px solid;\n"
-"	border-radius: 15px;\n"
+        self.submitReportBtn.setStyleSheet(u"QPushButton{\n"
+"	background-color: rgb(48, 48, 71);\n"
+"	border: 2px solid white;\n"
+"	border-radius: 20px;\n"
+"	color: white;\n"
+"	min-width: 170px;\n"
+"	max-width: 170px;\n"
+"	min-height: 40px;\n"
 "}\n"
 "\n"
 "QPushButton::hover {\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(139, 139, 207)\n"
-"}")
+"  	background-color: rgb(139, 139, 207);\n"
+"	widget-animation-duration: 400;\n"
+"}\n"
+"")
 
         self.gridLayout_4.addWidget(self.submitReportBtn, 6, 2, 1, 1)
 
         self.descriptionBox = QTextEdit(self.submitBugPageFrame)
         self.descriptionBox.setObjectName(u"descriptionBox")
         self.descriptionBox.setMaximumSize(QSize(520, 230))
-        self.descriptionBox.setFont(font6)
+        self.descriptionBox.setFont(font5)
         self.descriptionBox.setStyleSheet(u"#descriptionBox{\n"
 "	border: 1px solid rgb(255, 255, 255);\n"
 "	border-radius: 12px;\n"
@@ -1025,7 +1181,7 @@ class Ui_MainWindow(object):
         self.descriptionText.setObjectName(u"descriptionText")
         self.descriptionText.setMinimumSize(QSize(0, 30))
         self.descriptionText.setMaximumSize(QSize(520, 30))
-        self.descriptionText.setFont(font6)
+        self.descriptionText.setFont(font5)
         self.descriptionText.setStyleSheet(u"color: white;")
         self.descriptionText.setScaledContents(False)
         self.descriptionText.setWordWrap(True)
@@ -1087,7 +1243,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1106,21 +1262,55 @@ class Ui_MainWindow(object):
         self.mainPageBtn.setText(QCoreApplication.translate("MainWindow", u"Main Page", None))
         self.prerequisitesBtn.setText(QCoreApplication.translate("MainWindow", u"Pre-requisites", None))
         self.accountSettingsBtn.setText(QCoreApplication.translate("MainWindow", u"Account Settings", None))
-        self.leftPlusBtn.setText(QCoreApplication.translate("MainWindow", u"Left +", None))
-        self.heightMinusBtn.setText(QCoreApplication.translate("MainWindow", u"Height -", None))
-        self.topPlusBtn.setText(QCoreApplication.translate("MainWindow", u"Top +", None))
-        self.heightValueLabel.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Height Value", None))
-        self.leftValueLabel.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Left Value", None))
-        self.stopBtn.setText(QCoreApplication.translate("MainWindow", u"Stop", None))
-        self.widthPlusBtn.setText(QCoreApplication.translate("MainWindow", u"Width +", None))
         self.widthValueLabel.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Width Value", None))
-        self.startBtn.setText(QCoreApplication.translate("MainWindow", u"Start", None))
-        self.leftMinusBtn.setText(QCoreApplication.translate("MainWindow", u"Left -", None))
-        self.widthMinusBtn.setText(QCoreApplication.translate("MainWindow", u"Width -", None))
-        self.topMinusBtn.setText(QCoreApplication.translate("MainWindow", u"Top -", None))
+        self.heightValueLabel.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Height Value", None))
+        self.widthPlusBtn.setText(QCoreApplication.translate("MainWindow", u"Width +", None))
+        self.heightMinusBtn.setText(QCoreApplication.translate("MainWindow", u"Height -", None))
         self.topValueLabel.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Top Value", None))
+        self.topPlusBtn.setText(QCoreApplication.translate("MainWindow", u"Top +", None))
         self.screenCaptureLabel.setText("")
+        self.stopBtn.setText(QCoreApplication.translate("MainWindow", u"Stop", None))
+#if QT_CONFIG(tooltip)
+        self.enemiesCheckBox.setToolTip(QCoreApplication.translate("MainWindow", u"1", None))
+#endif // QT_CONFIG(tooltip)
+        self.enemiesCheckBox.setText(QCoreApplication.translate("MainWindow", u"Enemies", None))
+#if QT_CONFIG(tooltip)
+        self.enemiesDeadCheckBox.setToolTip(QCoreApplication.translate("MainWindow", u"6", None))
+#endif // QT_CONFIG(tooltip)
+        self.enemiesDeadCheckBox.setText(QCoreApplication.translate("MainWindow", u"Enemies Dead", None))
+#if QT_CONFIG(tooltip)
+        self.friendliesCheckBox.setToolTip(QCoreApplication.translate("MainWindow", u"2", None))
+#endif // QT_CONFIG(tooltip)
+        self.friendliesCheckBox.setText(QCoreApplication.translate("MainWindow", u"Friendlies", None))
+#if QT_CONFIG(tooltip)
+        self.lastSeenCheckBox.setToolTip(QCoreApplication.translate("MainWindow", u"7", None))
+#endif // QT_CONFIG(tooltip)
+        self.lastSeenCheckBox.setText(QCoreApplication.translate("MainWindow", u"Last Seen", None))
+#if QT_CONFIG(tooltip)
+        self.spikePlantedCheckBox.setToolTip(QCoreApplication.translate("MainWindow", u"4", None))
+#endif // QT_CONFIG(tooltip)
+        self.spikePlantedCheckBox.setText(QCoreApplication.translate("MainWindow", u"Spike Planted", None))
+#if QT_CONFIG(tooltip)
+        self.playersCheckBox.setToolTip(QCoreApplication.translate("MainWindow", u"0", None))
+#endif // QT_CONFIG(tooltip)
+        self.playersCheckBox.setText(QCoreApplication.translate("MainWindow", u"Players", None))
+#if QT_CONFIG(tooltip)
+        self.spikeCheckBox.setToolTip(QCoreApplication.translate("MainWindow", u"3", None))
+#endif // QT_CONFIG(tooltip)
+        self.spikeCheckBox.setText(QCoreApplication.translate("MainWindow", u"Spike", None))
+        self.classesSelectorLabel.setText(QCoreApplication.translate("MainWindow", u"Classes Selector", None))
+#if QT_CONFIG(tooltip)
+        self.friendliesDeadCheckBox.setToolTip(QCoreApplication.translate("MainWindow", u"5", None))
+#endif // QT_CONFIG(tooltip)
+        self.friendliesDeadCheckBox.setText(QCoreApplication.translate("MainWindow", u"Friendlies Dead", None))
+        self.checkBoxDescriptionLabel.setText(QCoreApplication.translate("MainWindow", u"Select Classes you want the model to predict from", None))
+        self.widthMinusBtn.setText(QCoreApplication.translate("MainWindow", u"Width -", None))
+        self.leftValueLabel.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Left Value", None))
+        self.leftPlusBtn.setText(QCoreApplication.translate("MainWindow", u"Left +", None))
+        self.leftMinusBtn.setText(QCoreApplication.translate("MainWindow", u"Left -", None))
         self.heightPlusBtn.setText(QCoreApplication.translate("MainWindow", u"Height +", None))
+        self.startBtn.setText(QCoreApplication.translate("MainWindow", u"Start", None))
+        self.topMinusBtn.setText(QCoreApplication.translate("MainWindow", u"Top -", None))
 #if QT_CONFIG(tooltip)
         self.settingsAdjustment.setToolTip("")
 #endif // QT_CONFIG(tooltip)

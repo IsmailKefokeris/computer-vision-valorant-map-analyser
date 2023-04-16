@@ -192,9 +192,12 @@ class MainWindow(QMainWindow, Ui_MainWindow, UIFunctions):
             # print(type(result))
 
             detections = sv.Detections.from_yolov8(result)
-            # Filter out to only show Enemies
+            # Filter out to only show What the User Selects
             # Had a NP.Bool Error: https://github.com/NVIDIA/TensorRT/issues/2557
-            detections = detections[detections.class_id == 1]
+            if self.filter:
+                detections = detections[eval(self.filter)]
+            else:
+                detections = detections[(detections.class_id == 0)]
 
             labels = [
                 f"{self.model.names[int(class_id)]} {confidence:0.2f}"

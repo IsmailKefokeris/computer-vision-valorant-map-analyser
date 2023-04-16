@@ -107,10 +107,50 @@ class UIFunctions:
             lambda name=self.heightValueLabel: self.screen_capture_adjustments_line_edit(name))
 
         ####################################################################################################
+        # Main Page CheckBox Logic
+        ####################################################################################################
+
+        self.filter = None
+
+        self.enemiesCheckBox.stateChanged.connect(self.checkbox_state_change)
+        self.enemiesDeadCheckBox.stateChanged.connect(
+            self.checkbox_state_change)
+        self.friendliesCheckBox.stateChanged.connect(
+            self.checkbox_state_change)
+        self.friendliesDeadCheckBox.stateChanged.connect(
+            self.checkbox_state_change)
+        self.lastSeenCheckBox.stateChanged.connect(self.checkbox_state_change)
+        self.playersCheckBox.stateChanged.connect(self.checkbox_state_change)
+        self.spikeCheckBox.stateChanged.connect(self.checkbox_state_change)
+        self.spikePlantedCheckBox.stateChanged.connect(
+            self.checkbox_state_change)
+
+        ####################################################################################################
         # Submit a Report/Bug Page
         ####################################################################################################
 
         self.submitReportBtn.clicked.connect(self.submit_feedback)
+
+    def checkbox_state_change(self):
+        self.filter = None
+
+        checked_boxes = [int(checkbox.toolTip()) for checkbox in self.findChildren(
+            QCheckBox) if checkbox.isChecked()]
+        # print('Checked boxes:', checked_boxes)
+
+        # Updates the Filter Options for the model
+        if len(checked_boxes) < 1:
+            self.filter = None
+            self.playersCheckBox.setCheckState(Qt.Checked)
+            return
+
+        for checked_box in checked_boxes:
+            if self.filter:
+                self.filter += f" | (detections.class_id == {checked_box})"
+            else:
+                self.filter = f"(detections.class_id == {checked_box})"
+
+        return self.filter
 
     def submit_feedback(self):
         # Submit Feedback Function
