@@ -94,7 +94,7 @@ class MainWindow(QMainWindow, Ui_MainWindow, UIFunctions):
 
         # Import Model Major Classes Used in predicitons
         self.model = YOLO(
-            r"models\firstLevel\train3\best.pt")
+            r"models\firstLevel\train\best.pt")
 
         self.CLASS_NAMES_DICT = self.model.model.names
 
