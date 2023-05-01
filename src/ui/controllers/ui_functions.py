@@ -11,8 +11,10 @@ from email.mime.multipart import MIMEMultipart
 import os
 from dotenv import load_dotenv
 
-# Import Mouse Tracker
+# Import services Mouse Tracker
 from services.MouseTracker import MouseTracker
+from services.screen_capture import *
+
 # Import Paintable Label
 from ui.widgets.PaintableLabel import PaintableLabel
 
