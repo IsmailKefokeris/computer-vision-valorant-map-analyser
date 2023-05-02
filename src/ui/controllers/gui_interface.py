@@ -26,7 +26,7 @@ from services.screen_capture import *
 from services.generate_box import *
 from services.screen_capture_worker import *
 from services.module_loader import *
-
+# import cv2 as cv
 # Setup Main Window
 
 

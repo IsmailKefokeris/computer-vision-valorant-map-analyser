@@ -1,4 +1,5 @@
 # Initial Modules to setup the Main Window Class
+import os
 from PySide6 import QtCore as qtc
 from PySide6 import QtWidgets as qtw
 from PySide6 import QtGui
@@ -8,7 +9,8 @@ from PySide6.QtCore import *
 from PySide6.QtGui import QPixmap, QImage
 
 # Modules required for screen capture
-
+# import mss
+# import cv2 as cv
 import numpy as np
 
 import importlib
@@ -27,8 +29,7 @@ from services.module_loader import *
 
 # Begin the Capture Process
 def start_capture(self):
-    mss, cv, ultralytics, YOLO, Annotator = load_modules(
-        [True, True, True, True])
+    mss, cv, ultralytics, YOLO, Annotator = load_modules()
     ultralytics.checks()
 
     self.lastIndex = 0
@@ -37,8 +38,8 @@ def start_capture(self):
     self.polygons = []
 
     # Import Model Major Classes Used in predicitons
-    self.model = YOLO(
-        r"src\models\firstLevel\train4\best.pt")
+    dirname = os.path.dirname(__file__)
+    self.model = YOLO(r"src\models\firstLevel\train4\best.pt")
 
     self.CLASS_NAMES_DICT = self.model.model.names
 
@@ -49,7 +50,7 @@ def start_capture(self):
 
     self.mon = {'top': self.screenTop, 'left': self.screenLeft,
                 'width': self.screenWidth, 'height': self.screenHeight}
-    self.sct = mss.mss()
+    self.sct = mss()
 
     self.set_screen_capture_dimensions_label()
 
@@ -179,11 +180,22 @@ def predict(self, frame):
             detections = detections[(detections.class_id == 0) & (
                 detections.confidence > 0.5)]
 
+        # print(type(detections))
+
+        # for _, _, confidence, class_id, _ in detections:
+        #     print(confidence, class_id)
+
         labels = [
             f"{self.model.names[int(class_id)]} {confidence:0.2f}"
-            for _, confidence, class_id, _
+            for _, _, confidence, class_id, _
             in detections
         ]
+
+        # labels = [
+        #     f"{self.model.names[int(detection[2])]} {detection[1]:0.2f}"
+        #     for detection
+        #     in detections
+        # ]
 
         for index, (zone, zone_annotator, box_annotator) in enumerate(zip(zones, zone_annotators, box_annotators)):
             mask = zone.trigger(detections=detections)
