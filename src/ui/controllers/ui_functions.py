@@ -2,10 +2,9 @@ from PySide6.QtCore import *
 from PySide6 import QtCore, QtGui, QtWidgets
 from PySide6.QtWidgets import QGraphicsDropShadowEffect
 
-# Importing Modules to help with feedback sending through Emails
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+# Importing Service to send email
+from services.emailing_service import *
+from services.email_verification_service import *
 
 # .env
 import os
@@ -272,6 +271,17 @@ class UIFunctions:
         else:
             self.reportTitleError.setText("ERROR - Title is required")
             return
+        if self.reportEmail.text():
+            if is_valid_email(self.reportEmail.text()):
+                email = self.reportEmail.text()
+                self.reportEmailError.setText("")
+            else:
+                self.reportEmailError.setText(
+                    "ERROR - Valid Email is required")
+                return
+        else:
+            self.reportEmailError.setText("ERROR - Email is required")
+            return
         if self.descriptionBox.toPlainText():
             description = self.descriptionBox.toPlainText()
             self.descriptionBoxError.setText("")
@@ -279,29 +289,15 @@ class UIFunctions:
             self.descriptionBoxError.setText("ERROR - Description is required")
             return
 
-        # Setup Email Message
-        try:
-            message = MIMEMultipart()
-            message["From"] = os.environ.get("ADMIN_EMAIL")
-            message["To"] = os.environ.get("EMAIL_RECIPIENT")
-            message["Subject"] = "Feedback from VMA Application"
-            body = f"Report Type: {report} \n Title: {title} \nFeedback: {description}"
-
-            message.attach(MIMEText(body, "plain"))
-
-            with smtplib.SMTP(os.environ.get("EMAIL_SERVER"), os.environ.get("EMAIL_PORT")) as server:
-                server.starttls()
-                server.login(os.environ.get("ADMIN_EMAIL"),
-                             os.environ.get("ADMIN_PASSWORD"))
-                server.sendmail(os.environ.get("ADMIN_EMAIL"),
-                                os.environ.get("EMAIL_RECIPIENT"), message.as_string())
-
+        if send_email(self, report, title, email, description):
             self.descriptionBox.clear()
             self.reportTitle.clear()
-            return True
-
-        except Exception as e:
-            print(e)
+            self.reportSendError.setStyleSheet("QLabel { color: green }")
+            self.reportSendError.setText("Email Sent!")
+        else:
+            self.reportSendError.setStyleSheet("QLabel { color: red }")
+            self.reportSendError.setText(
+                "ERROR SENDING EMAIL, TRY AGAIN OR GET IN CONTACT VIA DISCORD: R3D#1371")
 
     def save_account_settings(self):
         username = self.get_username()

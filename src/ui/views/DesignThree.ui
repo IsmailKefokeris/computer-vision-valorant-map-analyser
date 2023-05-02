@@ -483,7 +483,7 @@ QPushButton::hover {
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>0</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="mainPage">
              <property name="maximumSize">
@@ -2409,25 +2409,124 @@ QPushButton::hover {
                  <enum>QFrame::Raised</enum>
                 </property>
                 <layout class="QGridLayout" name="gridLayout_4">
-                 <item row="0" column="0" colspan="4">
-                  <widget class="QLabel" name="pageTitle">
+                 <item row="4" column="1">
+                  <widget class="QLineEdit" name="reportEmail">
+                   <property name="minimumSize">
+                    <size>
+                     <width>100</width>
+                     <height>30</height>
+                    </size>
+                   </property>
                    <property name="maximumSize">
                     <size>
-                     <width>16777215</width>
-                     <height>50</height>
+                     <width>200</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Cascadia Mono</family>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">border: 1px solid rgb(255, 255, 255);
+border-radius: 12px;
+color: rgb(255, 255, 255);
+background-color: rgb(68, 68, 102);
+padding-left: 5px;
+padding-right: 20px;
+
+
+</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="1">
+                  <widget class="QLabel" name="descriptionBoxError">
+                   <property name="styleSheet">
+                    <string notr="true">color:red;</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="7" column="0" colspan="4">
+                  <widget class="QTextEdit" name="descriptionBox">
+                   <property name="maximumSize">
+                    <size>
+                     <width>520</width>
+                     <height>230</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Cascadia Mono</family>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">#descriptionBox{
+	border: 1px solid rgb(255, 255, 255);
+	border-radius: 12px;
+	color: rgb(255, 255, 255);
+	background-color: rgb(68, 68, 102);
+	padding-left: 5px;
+	padding-right: 20px;
+}
+
+#descriptionBox::handle::vertical{
+	min-height:30px;
+	border-radius: 7px;
+}
+</string>
+                   </property>
+                   <property name="lineWrapMode">
+                    <enum>QTextEdit::FixedColumnWidth</enum>
+                   </property>
+                   <property name="lineWrapColumnOrWidth">
+                    <number>50</number>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Describe Steps to replicate or what feature you want!</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="reportTitleLabel">
+                   <property name="minimumSize">
+                    <size>
+                     <width>100</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>100</width>
+                     <height>20</height>
                     </size>
                    </property>
                    <property name="font">
                     <font>
                      <family>Cascadia Mono SemiBold</family>
-                     <pointsize>20</pointsize>
+                     <pointsize>12</pointsize>
+                     <bold>true</bold>
                     </font>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">color: white;</string>
                    </property>
                    <property name="text">
-                    <string>Issue Reporter</string>
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Title&lt;span style=&quot; color:#ff0000;&quot;&gt;*&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="2">
+                  <widget class="QLabel" name="reportTitleError">
+                   <property name="styleSheet">
+                    <string notr="true">color:red;</string>
+                   </property>
+                   <property name="text">
+                    <string/>
                    </property>
                   </widget>
                  </item>
@@ -2497,6 +2596,35 @@ QPushButton::hover {
                    </item>
                   </widget>
                  </item>
+                 <item row="5" column="0">
+                  <widget class="QLabel" name="descriptionLabel">
+                   <property name="minimumSize">
+                    <size>
+                     <width>115</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>115</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Cascadia Mono SemiBold</family>
+                     <pointsize>12</pointsize>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: white;</string>
+                   </property>
+                   <property name="text">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Description&lt;span style=&quot; color:#ff0000;&quot;&gt;*&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                  </widget>
+                 </item>
                  <item row="1" column="0">
                   <widget class="QLabel" name="reportTypeLabel">
                    <property name="minimumSize">
@@ -2523,35 +2651,6 @@ QPushButton::hover {
                    </property>
                    <property name="text">
                     <string>This is a</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="3" column="0">
-                  <widget class="QLabel" name="descriptionLabel">
-                   <property name="minimumSize">
-                    <size>
-                     <width>115</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>115</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Cascadia Mono SemiBold</family>
-                     <pointsize>12</pointsize>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">color: white;</string>
-                   </property>
-                   <property name="text">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Description&lt;span style=&quot; color:#ff0000;&quot;&gt;*&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                   </widget>
                  </item>
@@ -2587,36 +2686,7 @@ padding-right: 20px;
                    </property>
                   </widget>
                  </item>
-                 <item row="2" column="0">
-                  <widget class="QLabel" name="reportTitleLabel">
-                   <property name="minimumSize">
-                    <size>
-                     <width>100</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>100</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Cascadia Mono SemiBold</family>
-                     <pointsize>12</pointsize>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">color: white;</string>
-                   </property>
-                   <property name="text">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Title&lt;span style=&quot; color:#ff0000;&quot;&gt;*&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="6" column="2">
+                 <item row="8" column="2">
                   <widget class="QPushButton" name="submitReportBtn">
                    <property name="minimumSize">
                     <size>
@@ -2661,47 +2731,7 @@ QPushButton::hover {
                    </property>
                   </widget>
                  </item>
-                 <item row="5" column="0" colspan="4">
-                  <widget class="QTextEdit" name="descriptionBox">
-                   <property name="maximumSize">
-                    <size>
-                     <width>520</width>
-                     <height>230</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Cascadia Mono</family>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">#descriptionBox{
-	border: 1px solid rgb(255, 255, 255);
-	border-radius: 12px;
-	color: rgb(255, 255, 255);
-	background-color: rgb(68, 68, 102);
-	padding-left: 5px;
-	padding-right: 20px;
-}
-
-#descriptionBox::handle::vertical{
-	min-height:30px;
-	border-radius: 7px;
-}
-</string>
-                   </property>
-                   <property name="lineWrapMode">
-                    <enum>QTextEdit::FixedColumnWidth</enum>
-                   </property>
-                   <property name="lineWrapColumnOrWidth">
-                    <number>50</number>
-                   </property>
-                   <property name="placeholderText">
-                    <string>Describe Steps to replicate or what feature you want!</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="4" column="0" colspan="4">
+                 <item row="6" column="0" colspan="4">
                   <widget class="QLabel" name="descriptionText">
                    <property name="minimumSize">
                     <size>
@@ -2734,8 +2764,59 @@ QPushButton::hover {
                    </property>
                   </widget>
                  </item>
-                 <item row="3" column="1">
-                  <widget class="QLabel" name="descriptionBoxError">
+                 <item row="0" column="0" colspan="4">
+                  <widget class="QLabel" name="pageTitle">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>50</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Cascadia Mono SemiBold</family>
+                     <pointsize>20</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: white;</string>
+                   </property>
+                   <property name="text">
+                    <string>Issue Reporter</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="0">
+                  <widget class="QLabel" name="reportEmailLabel">
+                   <property name="minimumSize">
+                    <size>
+                     <width>100</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>100</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Cascadia Mono SemiBold</family>
+                     <pointsize>12</pointsize>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: white;</string>
+                   </property>
+                   <property name="text">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Email&lt;span style=&quot; color:#ff0000;&quot;&gt;*&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="2">
+                  <widget class="QLabel" name="reportEmailError">
                    <property name="styleSheet">
                     <string notr="true">color:red;</string>
                    </property>
@@ -2744,8 +2825,8 @@ QPushButton::hover {
                    </property>
                   </widget>
                  </item>
-                 <item row="2" column="2">
-                  <widget class="QLabel" name="reportTitleError">
+                 <item row="8" column="1">
+                  <widget class="QLabel" name="reportSendError">
                    <property name="styleSheet">
                     <string notr="true">color:red;</string>
                    </property>

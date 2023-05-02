@@ -75,15 +75,6 @@ def start_capture(self):
         frame = frame[..., :3]
         frame = np.ascontiguousarray(frame)
 
-        # Attempt at using threading to predict
-        # self.predict_thread = Thread(
-        #     target=self.predict, args=(frame,))
-        # self.predict_thread.start()
-        # # Wait for Thread to finish and return its value
-        # frame = self.predict_thread.
-        # print("FRTAME ", frame)
-        ######################################################################################
-
         # Conduct predictions
         self.class_counts = {
             self.model.names[class_id]: 0 for class_id in self.model.names}

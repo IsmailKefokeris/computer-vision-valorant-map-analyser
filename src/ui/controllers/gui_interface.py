@@ -72,8 +72,6 @@ class MainWindow(QMainWindow, Ui_MainWindow, UIFunctions):
         ####################################################################################################
 
         self.get_setting_values()
-        # self.account_settings.value("Key")
-        # self.setting_variables.value("Key")
 
         ####################################################################################################
         # Card Generation
