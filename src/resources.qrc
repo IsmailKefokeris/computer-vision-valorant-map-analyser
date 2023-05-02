@@ -1,8 +1,9 @@
 <RCC>
   <qresource>
-    <file>assets/images/icons/arrowDown.png</file>
+    <file>assets/images/ascent.png</file>
     <file>assets/images/placeholder.PNG</file>
     <file>assets/images/Vertical_jett.png</file>
+    <file>assets/images/icons/arrowDown.png</file>
     <file>assets/images/icons/bug.png</file>
     <file>assets/images/icons/cross.png</file>
     <file>assets/images/icons/home.png</file>

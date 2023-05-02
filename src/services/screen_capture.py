@@ -4,7 +4,6 @@ from PySide6 import QtWidgets as qtw
 from PySide6 import QtGui
 
 from PySide6.QtWidgets import QMainWindow, QGraphicsDropShadowEffect
-from ui.views.DesignThree_ui import *
 from PySide6.QtCore import *
 from PySide6.QtGui import QPixmap, QImage
 
@@ -26,10 +25,17 @@ import supervision as sv
 
 from PIL import Image
 
+from services.generate_box import *
+
 
 # Begin the Capture Process
 def start_capture(self):
     ultralytics.checks()
+
+    self.lastIndex = 0
+
+    # initiate polygons list
+    self.polygons = []
 
     # Import Model Major Classes Used in predicitons
     self.model = YOLO(
@@ -79,7 +85,8 @@ def start_capture(self):
         ######################################################################################
 
         # Conduct predictions
-
+        self.class_counts = {
+            self.model.names[class_id]: 0 for class_id in self.model.names}
         frame = predict(self, frame)
 
         pixmap = QtGui.QPixmap.fromImage(QtGui.QImage(
@@ -113,17 +120,18 @@ def draw_zones(self, frame):
 
     # print(f"type: {type(frame)}")
 
-    # initiate polygons list
-    polygons = []
-
-    if len(self.all_polygons) > 0:
+    if self.polygons_updated or len(self.all_polygons) > len(self.polygons):
+        self.polygons = []
         for key, polygon in self.all_polygons.items():
             # print(polygon)
             print(f"before: {polygon}")
             poly = np.array(polygon)
             print(f"After: {poly}")
 
-            polygons.append(poly)
+            self.polygons.append(poly)
+        print("POLYGONS UPDATED")
+        # Set polygons_updated to False after updating
+        self.polygons_updated = False
 
     # Get Image Dimensions
     # (342, 348, 3)
@@ -132,7 +140,7 @@ def draw_zones(self, frame):
 
     # zone = sv.PolygonZone(polygon=polygon, frame_resolution_wh=resoultion)
     zones = [sv.PolygonZone(
-        polygon=polygon, frame_resolution_wh=resoultion) for polygon in polygons]
+        polygon=polygon, frame_resolution_wh=resoultion) for polygon in self.polygons]
 
     # initiate annotators
     # zone_annotator = sv.PolygonZoneAnnotator(
@@ -142,19 +150,31 @@ def draw_zones(self, frame):
     zone_annotators = [sv.PolygonZoneAnnotator(zone=zone, color=colors.by_idx(
         index), thickness=2, text_thickness=3, text_scale=1) for index, zone in enumerate(zones)]
 
-    box_annotators = [sv.BoxAnnotator(color=colors.by_idx(
-        index), thickness=2, text_thickness=2, text_scale=1) for index in range(len(polygons))]
+    if self.tracker_updated:
+        for index, zone in enumerate(zones):
+            tracker_generate(self, index)
+        print("TRACKER UPDATED")
+        self.tracker_updated = False
 
-    return zones, zone_annotators, polygons, box_annotators
+    box_annotators = [sv.BoxAnnotator(color=colors.by_idx(
+        index), thickness=2, text_thickness=2, text_scale=1) for index in range(len(self.polygons))]
+
+    return zones, zone_annotators, self.polygons, box_annotators
+
+
+def tracker_generate(self, index):
+    widget = generate_basic_layout(index)
+    self.cards[f"card_{index}"] = widget
+    self.gridLayout_7.addWidget(widget, index+1, 0)
+    print("generated")
+
 
 # Begin the predict
-
-
 def predict(self, frame):
     try:
         zones, zone_annotators, polygons, box_annotators = draw_zones(
             self, frame)
-        results = self.model(frame)
+        results = self.model(frame, verbose=False)
         result = results[0]
 
         # print(type(result))
@@ -174,15 +194,41 @@ def predict(self, frame):
             in detections
         ]
 
-        for zone, zone_annotator, box_annotator in zip(zones, zone_annotators, box_annotators):
-            zone.trigger(detections=detections)
+        for index, (zone, zone_annotator, box_annotator) in enumerate(zip(zones, zone_annotators, box_annotators)):
+            mask = zone.trigger(detections=detections)
+            detections_filtered = detections[mask]
 
             frame = box_annotator.annotate(
                 scene=frame,
-                detections=detections,
+                detections=detections_filtered,
                 labels=labels)
 
             frame = zone_annotator.annotate(scene=frame)
+
+            # print(detections_filtered.class_id)
+
+            for detection in detections_filtered:
+                # print(detection[2])
+                class_id = int(detection[2])
+                class_name = self.model.names[class_id]
+
+                # Increment the count for the detected class
+                self.class_counts[class_name] += 1
+
+            # type = self.model.names[int(detections_filtered.class_id)]
+
+            # Print the counts for each class
+            # print("Class counts:")
+            # labels = self.findChildren(QLabel, f"desc")
+            text = []
+
+            for class_name, count in self.class_counts.items():
+                text.append(f"{count} {class_name}s")
+                # print(f"Zone {index}: {count} detections of class {class_name}")
+            # print(text)
+            cardLabel = self.cards[f"card_{index}"].findChild(
+                QLabel, f"desc_{index}")
+            cardLabel.setText(" ".join(text))
 
         return frame
     except Exception as e:

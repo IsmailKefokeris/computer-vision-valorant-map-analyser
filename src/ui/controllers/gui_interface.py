@@ -32,6 +32,8 @@ from ui.controllers.ui_functions import UIFunctions
 
 
 from services.screen_capture import *
+from services.generate_box import *
+from services.screen_capture_worker import *
 
 # Setup Main Window
 
@@ -40,11 +42,14 @@ class MainWindow(QMainWindow, Ui_MainWindow, UIFunctions):
 
     def __init__(self):
         super().__init__()
-        ####################################################################################################
+
+        ###################################################################################################
         # Init API
-        ####################################################################################################
+        ##################################################################################################
 
         self.henrik_api = HenrikApi()
+        self.polygons_updated = True
+        self.tracker_updated = True
 
         ####################################################################################################
         # Window Setup
@@ -69,6 +74,12 @@ class MainWindow(QMainWindow, Ui_MainWindow, UIFunctions):
         self.get_setting_values()
         # self.account_settings.value("Key")
         # self.setting_variables.value("Key")
+
+        ####################################################################################################
+        # Card Generation
+        ####################################################################################################
+
+        self.cards = {}
 
     # Begin Capturing Thread
     def start_capture_thread(self):

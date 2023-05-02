@@ -208,6 +208,8 @@ class UIFunctions:
 
             self.init_polygon()
 
+        self.tracker_updated = True
+        self.polygons_updated = True
         self.polygonLabel.setText("")
         # print(self.all_polygons)
         # print(self.polygon)
