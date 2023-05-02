@@ -483,7 +483,7 @@ QPushButton::hover {
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>2</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="mainPage">
              <property name="maximumSize">
@@ -493,279 +493,6 @@ QPushButton::hover {
               </size>
              </property>
              <layout class="QGridLayout" name="gridLayout_3">
-              <item row="3" column="0">
-               <widget class="QPushButton" name="startBtn">
-                <property name="minimumSize">
-                 <size>
-                  <width>174</width>
-                  <height>44</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>174</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <family>Cascadia Mono SemiBold</family>
-                  <pointsize>20</pointsize>
-                 </font>
-                </property>
-                <property name="cursor">
-                 <cursorShape>PointingHandCursor</cursorShape>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QPushButton{
-	background-color: rgb(48, 48, 71);
-	border: 2px solid white;
-	border-radius: 20px;
-	color: white;
-	min-width: 170px;
-	max-width: 170px;
-	min-height: 40px;
-}
-
-QPushButton::hover {
-  	background-color: rgb(139, 139, 207);
-	widget-animation-duration: 400;
-}
-</string>
-                </property>
-                <property name="text">
-                 <string>Start</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0" colspan="3">
-               <widget class="QLabel" name="screenCaptureLabel">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>500</width>
-                  <height>500</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>600</width>
-                  <height>500</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">#screenCaptureLabel{
-	min-width: 500px;
-	max-width: 600px;
-	min-height: 500px;
-	max-height: 500px;
-}</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="textFormat">
-                 <enum>Qt::MarkdownText</enum>
-                </property>
-                <property name="pixmap">
-                 <pixmap resource="../../resources.qrc">:/assets/images/placeholder.PNG</pixmap>
-                </property>
-                <property name="scaledContents">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="2">
-               <widget class="QPushButton" name="setPolygonBtn">
-                <property name="minimumSize">
-                 <size>
-                  <width>134</width>
-                  <height>24</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <family>Cascadia Mono Light</family>
-                  <pointsize>10</pointsize>
-                  <italic>false</italic>
-                  <bold>false</bold>
-                 </font>
-                </property>
-                <property name="cursor">
-                 <cursorShape>PointingHandCursor</cursorShape>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QPushButton{
-	font: 300 10pt &quot;Cascadia Mono Light&quot;;
-	background-color: rgb(48, 48, 71);
-	border: 2px solid white;
-	border-radius: 10px;
-	color: white;
-	min-width: 130px;
-	min-height: 20px;
-}
-
-QPushButton::hover {
-  	background-color: rgb(139, 139, 207);
-	widget-animation-duration: 400;
-}
-</string>
-                </property>
-                <property name="text">
-                 <string>Set Zone</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="QLineEdit" name="polygonName">
-                <property name="styleSheet">
-                 <string notr="true">#polygonName{
-	font: 300 10pt &quot;Cascadia Mono Light&quot;;
-	background-color: rgb(48, 48, 71);
-	border: 2px solid white;
-	border-radius: 10px;
-	color: white;
-	min-width: 130px;
-	max-width: 130px;
-	min-height: 20px;
-}
-
-</string>
-                </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-                <property name="placeholderText">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QPushButton" name="createPolygonBtn">
-                <property name="minimumSize">
-                 <size>
-                  <width>134</width>
-                  <height>24</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <family>Cascadia Mono Light</family>
-                  <pointsize>10</pointsize>
-                  <italic>false</italic>
-                  <bold>false</bold>
-                 </font>
-                </property>
-                <property name="cursor">
-                 <cursorShape>PointingHandCursor</cursorShape>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QPushButton{
-	font: 300 10pt &quot;Cascadia Mono Light&quot;;
-	background-color: rgb(48, 48, 71);
-	border: 2px solid white;
-	border-radius: 10px;
-	color: white;
-	min-width: 130px;
-	min-height: 20px;
-}
-
-QPushButton::hover {
-  	background-color: rgb(139, 139, 207);
-	widget-animation-duration: 400;
-}
-</string>
-                </property>
-                <property name="text">
-                 <string>Create Tracking  Zone</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0" colspan="3">
-               <widget class="QLabel" name="polygonLabel">
-                <property name="maximumSize">
-                 <size>
-                  <width>600</width>
-                  <height>25</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">#polygonLabel {
-	font: 10pt &quot;Cascadia Code&quot;;
-	color: rgb(170, 0, 0);
-	max-height: 25px;
-}</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="QPushButton" name="stopBtn">
-                <property name="minimumSize">
-                 <size>
-                  <width>174</width>
-                  <height>44</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>174</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <family>Cascadia Mono SemiBold</family>
-                  <pointsize>20</pointsize>
-                 </font>
-                </property>
-                <property name="cursor">
-                 <cursorShape>PointingHandCursor</cursorShape>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QPushButton{
-	background-color: rgb(48, 48, 71);
-	border: 2px solid white;
-	border-radius: 20px;
-	color: white;
-	min-width: 170px;
-	max-width: 170px;
-	min-height: 40px;
-}
-
-QPushButton::hover {
-  	background-color: rgb(139, 139, 207);
-	widget-animation-duration: 400;
-}
-</string>
-                </property>
-                <property name="text">
-                 <string>Stop</string>
-                </property>
-               </widget>
-              </item>
               <item row="0" column="3" rowspan="4">
                <widget class="QStackedWidget" name="stackedWidget_2">
                 <property name="maximumSize">
@@ -775,10 +502,34 @@ QPushButton::hover {
                  </size>
                 </property>
                 <property name="currentIndex">
-                 <number>1</number>
+                 <number>0</number>
                 </property>
                 <widget class="QWidget" name="page_3">
                  <layout class="QGridLayout" name="gridLayout_6">
+                  <item row="3" column="0">
+                   <widget class="QLineEdit" name="topValueLabel">
+                    <property name="minimumSize">
+                     <size>
+                      <width>84</width>
+                      <height>25</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>84</width>
+                      <height>25</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Mono</family>
+                     </font>
+                    </property>
+                    <property name="placeholderText">
+                     <string>Top Value</string>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="6" column="3">
                    <widget class="QPushButton" name="heightMinusBtn">
                     <property name="minimumSize">
@@ -821,390 +572,6 @@ QPushButton::hover {
                     </property>
                     <property name="text">
                      <string>Height -</string>
-                    </property>
-                    <attribute name="buttonGroup">
-                     <string notr="true">screenCaptureControls</string>
-                    </attribute>
-                   </widget>
-                  </item>
-                  <item row="5" column="0">
-                   <widget class="QPushButton" name="topPlusBtn">
-                    <property name="minimumSize">
-                     <size>
-                      <width>84</width>
-                      <height>24</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>84</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>Cascadia Mono SemiBold</family>
-                      <pointsize>12</pointsize>
-                     </font>
-                    </property>
-                    <property name="cursor">
-                     <cursorShape>PointingHandCursor</cursorShape>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QPushButton{
-	background-color: rgb(48, 48, 71);
-	border: 2px solid white;
-	border-radius: 10px;
-	color: white;
-	min-width: 80px;
-	max-width: 80px;
-	min-height: 20px;
-}
-
-QPushButton::hover {
-  	background-color: rgb(139, 139, 207);
-	widget-animation-duration: 400;
-}
-</string>
-                    </property>
-                    <property name="text">
-                     <string>Top +</string>
-                    </property>
-                    <attribute name="buttonGroup">
-                     <string notr="true">screenCaptureControls</string>
-                    </attribute>
-                   </widget>
-                  </item>
-                  <item row="3" column="0">
-                   <widget class="QLineEdit" name="topValueLabel">
-                    <property name="minimumSize">
-                     <size>
-                      <width>84</width>
-                      <height>25</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>84</width>
-                      <height>25</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>Cascadia Mono</family>
-                     </font>
-                    </property>
-                    <property name="placeholderText">
-                     <string>Top Value</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="2">
-                   <widget class="QLineEdit" name="widthValueLabel">
-                    <property name="minimumSize">
-                     <size>
-                      <width>84</width>
-                      <height>25</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>84</width>
-                      <height>25</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>Cascadia Mono</family>
-                     </font>
-                    </property>
-                    <property name="placeholderText">
-                     <string>Width Value</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="6" column="2">
-                   <widget class="QPushButton" name="widthMinusBtn">
-                    <property name="minimumSize">
-                     <size>
-                      <width>84</width>
-                      <height>24</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>84</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>Cascadia Mono SemiBold</family>
-                      <pointsize>12</pointsize>
-                     </font>
-                    </property>
-                    <property name="cursor">
-                     <cursorShape>PointingHandCursor</cursorShape>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QPushButton{
-	background-color: rgb(48, 48, 71);
-	border: 2px solid white;
-	border-radius: 10px;
-	color: white;
-	min-width: 80px;
-	max-width: 80px;
-	min-height: 20px;
-}
-
-QPushButton::hover {
-  	background-color: rgb(139, 139, 207);
-	widget-animation-duration: 400;
-}
-</string>
-                    </property>
-                    <property name="text">
-                     <string>Width -</string>
-                    </property>
-                    <attribute name="buttonGroup">
-                     <string notr="true">screenCaptureControls</string>
-                    </attribute>
-                   </widget>
-                  </item>
-                  <item row="7" column="1">
-                   <widget class="QPushButton" name="previousBtn">
-                    <property name="minimumSize">
-                     <size>
-                      <width>82</width>
-                      <height>22</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>82</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>Cascadia Code</family>
-                      <pointsize>10</pointsize>
-                      <italic>false</italic>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                    <property name="cursor">
-                     <cursorShape>PointingHandCursor</cursorShape>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QPushButton{
-	font: 10pt &quot;Cascadia Code&quot;;
-	background-color: rgb(48, 48, 71);
-	border: 1px solid white;
-	border-radius: 10px;
-	color: white;
-	min-width: 80px;
-	max-width: 80px;
-	min-height: 20px;
-}
-
-QPushButton::hover {
-  	background-color: rgb(139, 139, 207);
-	widget-animation-duration: 400;
-}
-</string>
-                    </property>
-                    <property name="text">
-                     <string>Previous</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="5" column="2">
-                   <widget class="QPushButton" name="widthPlusBtn">
-                    <property name="minimumSize">
-                     <size>
-                      <width>84</width>
-                      <height>24</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>84</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>Cascadia Mono SemiBold</family>
-                      <pointsize>12</pointsize>
-                     </font>
-                    </property>
-                    <property name="cursor">
-                     <cursorShape>PointingHandCursor</cursorShape>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QPushButton{
-	background-color: rgb(48, 48, 71);
-	border: 2px solid white;
-	border-radius: 10px;
-	color: white;
-	min-width: 80px;
-	max-width: 80px;
-	min-height: 20px;
-}
-
-QPushButton::hover {
-  	background-color: rgb(139, 139, 207);
-	widget-animation-duration: 400;
-}
-</string>
-                    </property>
-                    <property name="text">
-                     <string>Width +</string>
-                    </property>
-                    <attribute name="buttonGroup">
-                     <string notr="true">screenCaptureControls</string>
-                    </attribute>
-                   </widget>
-                  </item>
-                  <item row="6" column="1">
-                   <widget class="QPushButton" name="leftMinusBtn">
-                    <property name="minimumSize">
-                     <size>
-                      <width>84</width>
-                      <height>24</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>84</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>Cascadia Mono SemiBold</family>
-                      <pointsize>12</pointsize>
-                     </font>
-                    </property>
-                    <property name="cursor">
-                     <cursorShape>PointingHandCursor</cursorShape>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QPushButton{
-	background-color: rgb(48, 48, 71);
-	border: 2px solid white;
-	border-radius: 10px;
-	color: white;
-	min-width: 80px;
-	max-width: 80px;
-	min-height: 20px;
-}
-
-QPushButton::hover {
-  	background-color: rgb(139, 139, 207);
-	widget-animation-duration: 400;
-}
-</string>
-                    </property>
-                    <property name="text">
-                     <string>Left -</string>
-                    </property>
-                    <attribute name="buttonGroup">
-                     <string notr="true">screenCaptureControls</string>
-                    </attribute>
-                   </widget>
-                  </item>
-                  <item row="5" column="3">
-                   <widget class="QPushButton" name="heightPlusBtn">
-                    <property name="minimumSize">
-                     <size>
-                      <width>84</width>
-                      <height>24</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>84</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>Cascadia Mono SemiBold</family>
-                      <pointsize>12</pointsize>
-                     </font>
-                    </property>
-                    <property name="cursor">
-                     <cursorShape>PointingHandCursor</cursorShape>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QPushButton{
-	background-color: rgb(48, 48, 71);
-	border: 2px solid white;
-	border-radius: 10px;
-	color: white;
-	min-width: 80px;
-	max-width: 80px;
-	min-height: 20px;
-}
-
-QPushButton::hover {
-  	background-color: rgb(139, 139, 207);
-	widget-animation-duration: 400;
-}
-</string>
-                    </property>
-                    <property name="text">
-                     <string>Height +</string>
-                    </property>
-                    <attribute name="buttonGroup">
-                     <string notr="true">screenCaptureControls</string>
-                    </attribute>
-                   </widget>
-                  </item>
-                  <item row="5" column="1">
-                   <widget class="QPushButton" name="leftPlusBtn">
-                    <property name="minimumSize">
-                     <size>
-                      <width>84</width>
-                      <height>24</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>84</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>Cascadia Mono SemiBold</family>
-                      <pointsize>12</pointsize>
-                     </font>
-                    </property>
-                    <property name="cursor">
-                     <cursorShape>PointingHandCursor</cursorShape>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QPushButton{
-	background-color: rgb(48, 48, 71);
-	border: 2px solid white;
-	border-radius: 10px;
-	color: white;
-	min-width: 80px;
-	max-width: 80px;
-	min-height: 20px;
-}
-
-QPushButton::hover {
-  	background-color: rgb(139, 139, 207);
-	widget-animation-duration: 400;
-}
-</string>
-                    </property>
-                    <property name="text">
-                     <string>Left +</string>
                     </property>
                     <attribute name="buttonGroup">
                      <string notr="true">screenCaptureControls</string>
@@ -1259,6 +626,174 @@ QPushButton::hover {
                     </attribute>
                    </widget>
                   </item>
+                  <item row="6" column="1">
+                   <widget class="QPushButton" name="leftMinusBtn">
+                    <property name="minimumSize">
+                     <size>
+                      <width>84</width>
+                      <height>24</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>84</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Mono SemiBold</family>
+                      <pointsize>12</pointsize>
+                     </font>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{
+	background-color: rgb(48, 48, 71);
+	border: 2px solid white;
+	border-radius: 10px;
+	color: white;
+	min-width: 80px;
+	max-width: 80px;
+	min-height: 20px;
+}
+
+QPushButton::hover {
+  	background-color: rgb(139, 139, 207);
+	widget-animation-duration: 400;
+}
+</string>
+                    </property>
+                    <property name="text">
+                     <string>Left -</string>
+                    </property>
+                    <attribute name="buttonGroup">
+                     <string notr="true">screenCaptureControls</string>
+                    </attribute>
+                   </widget>
+                  </item>
+                  <item row="3" column="2">
+                   <widget class="QLineEdit" name="widthValueLabel">
+                    <property name="minimumSize">
+                     <size>
+                      <width>84</width>
+                      <height>25</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>84</width>
+                      <height>25</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Mono</family>
+                     </font>
+                    </property>
+                    <property name="placeholderText">
+                     <string>Width Value</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="1">
+                   <widget class="QPushButton" name="leftPlusBtn">
+                    <property name="minimumSize">
+                     <size>
+                      <width>84</width>
+                      <height>24</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>84</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Mono SemiBold</family>
+                      <pointsize>12</pointsize>
+                     </font>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{
+	background-color: rgb(48, 48, 71);
+	border: 2px solid white;
+	border-radius: 10px;
+	color: white;
+	min-width: 80px;
+	max-width: 80px;
+	min-height: 20px;
+}
+
+QPushButton::hover {
+  	background-color: rgb(139, 139, 207);
+	widget-animation-duration: 400;
+}
+</string>
+                    </property>
+                    <property name="text">
+                     <string>Left +</string>
+                    </property>
+                    <attribute name="buttonGroup">
+                     <string notr="true">screenCaptureControls</string>
+                    </attribute>
+                   </widget>
+                  </item>
+                  <item row="5" column="0">
+                   <widget class="QPushButton" name="topPlusBtn">
+                    <property name="minimumSize">
+                     <size>
+                      <width>84</width>
+                      <height>24</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>84</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Mono SemiBold</family>
+                      <pointsize>12</pointsize>
+                     </font>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{
+	background-color: rgb(48, 48, 71);
+	border: 2px solid white;
+	border-radius: 10px;
+	color: white;
+	min-width: 80px;
+	max-width: 80px;
+	min-height: 20px;
+}
+
+QPushButton::hover {
+  	background-color: rgb(139, 139, 207);
+	widget-animation-duration: 400;
+}
+</string>
+                    </property>
+                    <property name="text">
+                     <string>Top +</string>
+                    </property>
+                    <attribute name="buttonGroup">
+                     <string notr="true">screenCaptureControls</string>
+                    </attribute>
+                   </widget>
+                  </item>
                   <item row="3" column="3">
                    <widget class="QLineEdit" name="heightValueLabel">
                     <property name="minimumSize">
@@ -1307,6 +842,150 @@ QPushButton::hover {
                     </property>
                    </widget>
                   </item>
+                  <item row="6" column="2">
+                   <widget class="QPushButton" name="widthMinusBtn">
+                    <property name="minimumSize">
+                     <size>
+                      <width>84</width>
+                      <height>24</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>84</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Mono SemiBold</family>
+                      <pointsize>12</pointsize>
+                     </font>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{
+	background-color: rgb(48, 48, 71);
+	border: 2px solid white;
+	border-radius: 10px;
+	color: white;
+	min-width: 80px;
+	max-width: 80px;
+	min-height: 20px;
+}
+
+QPushButton::hover {
+  	background-color: rgb(139, 139, 207);
+	widget-animation-duration: 400;
+}
+</string>
+                    </property>
+                    <property name="text">
+                     <string>Width -</string>
+                    </property>
+                    <attribute name="buttonGroup">
+                     <string notr="true">screenCaptureControls</string>
+                    </attribute>
+                   </widget>
+                  </item>
+                  <item row="5" column="3">
+                   <widget class="QPushButton" name="heightPlusBtn">
+                    <property name="minimumSize">
+                     <size>
+                      <width>84</width>
+                      <height>24</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>84</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Mono SemiBold</family>
+                      <pointsize>12</pointsize>
+                     </font>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{
+	background-color: rgb(48, 48, 71);
+	border: 2px solid white;
+	border-radius: 10px;
+	color: white;
+	min-width: 80px;
+	max-width: 80px;
+	min-height: 20px;
+}
+
+QPushButton::hover {
+  	background-color: rgb(139, 139, 207);
+	widget-animation-duration: 400;
+}
+</string>
+                    </property>
+                    <property name="text">
+                     <string>Height +</string>
+                    </property>
+                    <attribute name="buttonGroup">
+                     <string notr="true">screenCaptureControls</string>
+                    </attribute>
+                   </widget>
+                  </item>
+                  <item row="5" column="2">
+                   <widget class="QPushButton" name="widthPlusBtn">
+                    <property name="minimumSize">
+                     <size>
+                      <width>84</width>
+                      <height>24</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>84</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Mono SemiBold</family>
+                      <pointsize>12</pointsize>
+                     </font>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{
+	background-color: rgb(48, 48, 71);
+	border: 2px solid white;
+	border-radius: 10px;
+	color: white;
+	min-width: 80px;
+	max-width: 80px;
+	min-height: 20px;
+}
+
+QPushButton::hover {
+  	background-color: rgb(139, 139, 207);
+	widget-animation-duration: 400;
+}
+</string>
+                    </property>
+                    <property name="text">
+                     <string>Width +</string>
+                    </property>
+                    <attribute name="buttonGroup">
+                     <string notr="true">screenCaptureControls</string>
+                    </attribute>
+                   </widget>
+                  </item>
                   <item row="1" column="0" colspan="4">
                    <widget class="QFrame" name="classSelectorFrame">
                     <property name="styleSheet">
@@ -1314,7 +993,7 @@ QPushButton::hover {
 	max-width: 615px;
 	max-height:500px;
 	min-width: 250px;
-	min-height:500px;
+	min-height:450px;
 	border: 2px solid rgb(255, 255, 255);
 	border-radius: 35px;
 }</string>
@@ -1549,54 +1228,6 @@ QPushButton::hover {
                     </layout>
                    </widget>
                   </item>
-                  <item row="7" column="2">
-                   <widget class="QPushButton" name="nextBtn">
-                    <property name="minimumSize">
-                     <size>
-                      <width>82</width>
-                      <height>22</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>82</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>Cascadia Code</family>
-                      <pointsize>10</pointsize>
-                      <italic>false</italic>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                    <property name="cursor">
-                     <cursorShape>PointingHandCursor</cursorShape>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QPushButton{
-	font: 10pt &quot;Cascadia Code&quot;;
-	background-color: rgb(48, 48, 71);
-	border: 1px solid white;
-	border-radius: 10px;
-	color: white;
-	min-width: 80px;
-	max-width: 80px;
-	min-height: 20px;
-}
-
-QPushButton::hover {
-  	background-color: rgb(139, 139, 207);
-	widget-animation-duration: 400;
-}
-</string>
-                    </property>
-                    <property name="text">
-                     <string>Next</string>
-                    </property>
-                   </widget>
-                  </item>
                  </layout>
                 </widget>
                 <widget class="QWidget" name="page_4">
@@ -1622,6 +1253,379 @@ QPushButton::hover {
                   </item>
                  </layout>
                 </widget>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="3">
+               <widget class="QLabel" name="screenCaptureLabel">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>500</width>
+                  <height>500</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>600</width>
+                  <height>500</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">#screenCaptureLabel{
+	min-width: 500px;
+	max-width: 600px;
+	min-height: 500px;
+	max-height: 500px;
+}</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="textFormat">
+                 <enum>Qt::MarkdownText</enum>
+                </property>
+                <property name="pixmap">
+                 <pixmap resource="../../resources.qrc">:/assets/images/placeholder.PNG</pixmap>
+                </property>
+                <property name="scaledContents">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="3">
+               <layout class="QHBoxLayout" name="horizontalLayout_8">
+                <item>
+                 <widget class="QPushButton" name="previousBtn">
+                  <property name="minimumSize">
+                   <size>
+                    <width>82</width>
+                    <height>22</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>82</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Cascadia Code</family>
+                    <pointsize>10</pointsize>
+                    <italic>false</italic>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	font: 10pt &quot;Cascadia Code&quot;;
+	background-color: rgb(48, 48, 71);
+	border: 1px solid white;
+	border-radius: 10px;
+	color: white;
+	min-width: 80px;
+	max-width: 80px;
+	min-height: 20px;
+}
+
+QPushButton::hover {
+  	background-color: rgb(139, 139, 207);
+	widget-animation-duration: 400;
+}
+</string>
+                  </property>
+                  <property name="text">
+                   <string>Previous</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="nextBtn">
+                  <property name="minimumSize">
+                   <size>
+                    <width>82</width>
+                    <height>22</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>82</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Cascadia Code</family>
+                    <pointsize>10</pointsize>
+                    <italic>false</italic>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	font: 10pt &quot;Cascadia Code&quot;;
+	background-color: rgb(48, 48, 71);
+	border: 1px solid white;
+	border-radius: 10px;
+	color: white;
+	min-width: 80px;
+	max-width: 80px;
+	min-height: 20px;
+}
+
+QPushButton::hover {
+  	background-color: rgb(139, 139, 207);
+	widget-animation-duration: 400;
+}
+</string>
+                  </property>
+                  <property name="text">
+                   <string>Next</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="4" column="2">
+               <widget class="QPushButton" name="stopBtn">
+                <property name="minimumSize">
+                 <size>
+                  <width>174</width>
+                  <height>44</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>174</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Cascadia Mono SemiBold</family>
+                  <pointsize>20</pointsize>
+                 </font>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{
+	background-color: rgb(48, 48, 71);
+	border: 2px solid white;
+	border-radius: 20px;
+	color: white;
+	min-width: 170px;
+	max-width: 170px;
+	min-height: 40px;
+}
+
+QPushButton::hover {
+  	background-color: rgb(139, 139, 207);
+	widget-animation-duration: 400;
+}
+</string>
+                </property>
+                <property name="text">
+                 <string>Stop</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QPushButton" name="startBtn">
+                <property name="minimumSize">
+                 <size>
+                  <width>174</width>
+                  <height>44</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>174</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Cascadia Mono SemiBold</family>
+                  <pointsize>20</pointsize>
+                 </font>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{
+	background-color: rgb(48, 48, 71);
+	border: 2px solid white;
+	border-radius: 20px;
+	color: white;
+	min-width: 170px;
+	max-width: 170px;
+	min-height: 40px;
+}
+
+QPushButton::hover {
+  	background-color: rgb(139, 139, 207);
+	widget-animation-duration: 400;
+}
+</string>
+                </property>
+                <property name="text">
+                 <string>Start</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0" colspan="3">
+               <widget class="QLabel" name="polygonLabel">
+                <property name="maximumSize">
+                 <size>
+                  <width>600</width>
+                  <height>25</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">#polygonLabel {
+	font: 10pt &quot;Cascadia Code&quot;;
+	color: rgb(170, 0, 0);
+	max-height: 25px;
+}</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QPushButton" name="setPolygonBtn">
+                <property name="minimumSize">
+                 <size>
+                  <width>134</width>
+                  <height>24</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Cascadia Mono Light</family>
+                  <pointsize>10</pointsize>
+                  <italic>false</italic>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{
+	font: 300 10pt &quot;Cascadia Mono Light&quot;;
+	background-color: rgb(48, 48, 71);
+	border: 2px solid white;
+	border-radius: 10px;
+	color: white;
+	min-width: 130px;
+	min-height: 20px;
+}
+
+QPushButton::hover {
+  	background-color: rgb(139, 139, 207);
+	widget-animation-duration: 400;
+}
+</string>
+                </property>
+                <property name="text">
+                 <string>Set Zone</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLineEdit" name="polygonName">
+                <property name="styleSheet">
+                 <string notr="true">#polygonName{
+	font: 300 10pt &quot;Cascadia Mono Light&quot;;
+	background-color: rgb(48, 48, 71);
+	border: 2px solid white;
+	border-radius: 10px;
+	color: white;
+	min-width: 130px;
+	max-width: 130px;
+	min-height: 20px;
+}
+
+</string>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="placeholderText">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QPushButton" name="createPolygonBtn">
+                <property name="minimumSize">
+                 <size>
+                  <width>134</width>
+                  <height>24</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Cascadia Mono Light</family>
+                  <pointsize>10</pointsize>
+                  <italic>false</italic>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{
+	font: 300 10pt &quot;Cascadia Mono Light&quot;;
+	background-color: rgb(48, 48, 71);
+	border: 2px solid white;
+	border-radius: 10px;
+	color: white;
+	min-width: 130px;
+	min-height: 20px;
+}
+
+QPushButton::hover {
+  	background-color: rgb(139, 139, 207);
+	widget-animation-duration: 400;
+}
+</string>
+                </property>
+                <property name="text">
+                 <string>Create Tracking  Zone</string>
+                </property>
                </widget>
               </item>
              </layout>

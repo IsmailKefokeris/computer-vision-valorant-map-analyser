@@ -6,6 +6,9 @@ from PySide6.QtWidgets import QGraphicsDropShadowEffect
 from services.emailing_service import *
 from services.email_verification_service import *
 
+# Import generic Services
+from services.page_cycle import *
+
 # .env
 import os
 from dotenv import load_dotenv
@@ -55,6 +58,9 @@ class UIFunctions:
         # Home Page
         self.mainPageBtn.clicked.connect(
             lambda: self.stackedWidget.setCurrentWidget(self.mainPage))
+        # Buttons in Home Page
+        self.nextBtn.clicked.connect(lambda: go_to_next_page(self))
+        self.previousBtn.clicked.connect(lambda: go_to_previous_page(self))
 
         # Pre-Requisites Page
         self.prerequisitesBtn.clicked.connect(
@@ -171,7 +177,7 @@ class UIFunctions:
         self.tracker.set_enabled(False)
 
 ####################################################################################################
-# Functions
+# Functions - START HERE
 ####################################################################################################
 
     def init_polygon(self):
