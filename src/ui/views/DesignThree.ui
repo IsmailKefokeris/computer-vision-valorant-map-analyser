@@ -1624,7 +1624,7 @@ QPushButton::hover {
 </string>
                 </property>
                 <property name="text">
-                 <string>Create Tracking  Zone</string>
+                 <string>Create Tracking Zone</string>
                 </property>
                </widget>
               </item>

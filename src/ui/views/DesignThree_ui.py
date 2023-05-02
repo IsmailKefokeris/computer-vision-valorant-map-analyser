@@ -1539,7 +1539,7 @@ class Ui_MainWindow(object):
         self.polygonLabel.setText("")
         self.setPolygonBtn.setText(QCoreApplication.translate("MainWindow", u"Set Zone", None))
         self.polygonName.setPlaceholderText("")
-        self.createPolygonBtn.setText(QCoreApplication.translate("MainWindow", u"Create Tracking  Zone", None))
+        self.createPolygonBtn.setText(QCoreApplication.translate("MainWindow", u"Create Tracking Zone", None))
 #if QT_CONFIG(tooltip)
         self.settingsAdjustment.setToolTip("")
 #endif // QT_CONFIG(tooltip)

@@ -11,22 +11,13 @@ from PySide6.QtCore import *
 from PySide6.QtGui import QPixmap, QImage
 
 # Modules required for screen capture
-from mss import mss
-import cv2 as cv
 import numpy as np
 
 # API's
 from api.henrikdev_api import HenrikApi
 
-# Modules required for Model and predictions
-import ultralytics
-from ultralytics import YOLO
-from ultralytics.yolo.utils.plotting import Annotator
-
 # Annotator from Supervision
 import supervision as sv
-
-from PIL import Image
 
 from ui.controllers.ui_functions import UIFunctions
 
@@ -34,6 +25,7 @@ from ui.controllers.ui_functions import UIFunctions
 from services.screen_capture import *
 from services.generate_box import *
 from services.screen_capture_worker import *
+from services.module_loader import *
 
 # Setup Main Window
 
@@ -168,6 +160,7 @@ class MainWindow(QMainWindow, Ui_MainWindow, UIFunctions):
     # Explicitly defining close event to ensure
     # nothing is running in the background after the application is shut down
     def closeEvent(self, event):
+        _, cv, _, _, _ = load_modules([False, True, False, False, False])
         cv.destroyAllWindows()
 
         # Stop Capturing

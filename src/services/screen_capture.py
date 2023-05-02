@@ -8,28 +8,27 @@ from PySide6.QtCore import *
 from PySide6.QtGui import QPixmap, QImage
 
 # Modules required for screen capture
-from mss import mss
-import cv2 as cv
+
 import numpy as np
 
-# API's
-from api.henrikdev_api import HenrikApi
+import importlib
 
 # Modules required for Model and predictions
-import ultralytics
-from ultralytics import YOLO
-from ultralytics.yolo.utils.plotting import Annotator
+# import ultralytics
+# from ultralytics import YOLO
+# from ultralytics.yolo.utils.plotting import Annotator
 
 # Annotator from Supervision
 import supervision as sv
 
-from PIL import Image
-
 from services.generate_box import *
+from services.module_loader import *
 
 
 # Begin the Capture Process
 def start_capture(self):
+    mss, cv, ultralytics, YOLO, Annotator = load_modules(
+        [True, True, True, True])
     ultralytics.checks()
 
     self.lastIndex = 0
@@ -50,7 +49,7 @@ def start_capture(self):
 
     self.mon = {'top': self.screenTop, 'left': self.screenLeft,
                 'width': self.screenWidth, 'height': self.screenHeight}
-    self.sct = mss()
+    self.sct = mss.mss()
 
     self.set_screen_capture_dimensions_label()
 
@@ -96,6 +95,7 @@ def start_capture(self):
 
 
 def crop_and_mask(self, frame):
+    _, cv, _, _, _ = load_modules([False, True, False, False, False])
     # Specific To Ascent
     map = cv.imread("ascent.png")
     grey_map = cv.cvtColor(map, cv.COLOR_BGR2GRAY)

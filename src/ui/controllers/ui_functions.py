@@ -2,9 +2,11 @@ from PySide6.QtCore import *
 from PySide6 import QtCore, QtGui, QtWidgets
 from PySide6.QtWidgets import QGraphicsDropShadowEffect
 
+import importlib
+
 # Importing Service to send email
-from services.emailing_service import *
-from services.email_verification_service import *
+# from services.emailing_service import *
+# from services.email_verification_service import *
 
 # Import generic Services
 from services.page_cycle import *
@@ -269,6 +271,10 @@ class UIFunctions:
         return self.filter
 
     def submit_feedback(self):
+        module = importlib.import_module("services.emailing_service")
+        module2 = importlib.import_module(
+            "services.email_verification_service")
+
         # Submit Feedback Function
         report = self.reportType.currentText()
         if self.reportTitle.text():
@@ -278,7 +284,7 @@ class UIFunctions:
             self.reportTitleError.setText("ERROR - Title is required")
             return
         if self.reportEmail.text():
-            if is_valid_email(self.reportEmail.text()):
+            if module2.is_valid_email(self.reportEmail.text()):
                 email = self.reportEmail.text()
                 self.reportEmailError.setText("")
             else:
@@ -295,7 +301,7 @@ class UIFunctions:
             self.descriptionBoxError.setText("ERROR - Description is required")
             return
 
-        if send_email(self, report, title, email, description):
+        if module.send_email(self, report, title, email, description):
             self.descriptionBox.clear()
             self.reportTitle.clear()
             self.reportSendError.setStyleSheet("QLabel { color: green }")
