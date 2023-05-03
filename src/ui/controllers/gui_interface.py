@@ -21,6 +21,8 @@ import supervision as sv
 
 from ui.controllers.ui_functions import UIFunctions
 
+# Hotkeys
+import keyboard
 
 from services.screen_capture import *
 from services.generate_box import *
@@ -70,6 +72,21 @@ class MainWindow(QMainWindow, Ui_MainWindow, UIFunctions):
         ####################################################################################################
 
         self.cards = {}
+
+        ####################################################################################################
+        # Application Hotkeys
+        ####################################################################################################
+        self.hotkey = 'ctrl+alt+o'
+        keyboard.add_hotkey(self.hotkey, self.toggle_visibility)
+
+        # Enable mouse tracking to receive mouse move events even when no button is pressed
+        self.setMouseTracking(True)
+
+    def toggle_visibility(self):
+        if self.isVisible():
+            self.hide()
+        else:
+            self.show()
 
     # Begin Capturing Thread
     def start_capture_thread(self):

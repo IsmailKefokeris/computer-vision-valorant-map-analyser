@@ -41,6 +41,8 @@ class UIFunctions:
         ####################################################################################################
 
         # Remove Title Bar
+        # This makes it so the application stays ontop of any window open no matter what
+        # self.setWindowFlag(Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint)
         self.setWindowFlag(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
 
