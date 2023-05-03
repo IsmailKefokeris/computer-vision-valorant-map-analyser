@@ -97,7 +97,6 @@ class MainWindow(QMainWindow, Ui_MainWindow, UIFunctions):
         self.stopBtn.setEnabled(True)
         self.capturing = True
         try:
-            # self.thread.start()
             start_capture(self)
         except Exception as e:
             print(e)
