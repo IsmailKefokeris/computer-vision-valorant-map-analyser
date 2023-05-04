@@ -10,7 +10,7 @@ from ui.controllers.ui_functions import *
 
 if __name__ == "__main__":
     try:
-        from ctypes import windll  # Only exists on Windows.
+        from ctypes import windll
         myappid = 'IsmailKefokeris.CVVMA.030'
         windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
     except ImportError:

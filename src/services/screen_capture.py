@@ -23,6 +23,7 @@ import importlib
 
 # Annotator from Supervision
 import supervision as sv
+from supervision.draw.color import ColorPalette
 
 from services.generate_box import *
 from services.module_loader import *
@@ -75,17 +76,21 @@ def start_capture(self):
         sct_img = self.sct.grab(self.mon)
 
         # Get the colours right
-        frame = cv.cvtColor(np.array(sct_img), cv.COLOR_BGR2RGB)
+        # frame = cv.cvtColor(np.array(sct_img), cv.COLOR_RGB2BGR)
+        frame = np.array(sct_img)
 
         # Ensuring the frame is readable for qtImage and most other things really
-        frame = np.array(frame)
+        # frame = np.array(frame)
         frame = frame[..., :3]
         frame = np.ascontiguousarray(frame)
 
         # Conduct predictions
         self.class_counts = {
             self.model.names[class_id]: 0 for class_id in self.model.names}
+
         frame = predict(self, frame)
+
+        frame = cv.cvtColor(frame, cv.COLOR_RGB2BGR)
 
         pixmap = QtGui.QPixmap.fromImage(QtGui.QImage(
             frame.data, frame.shape[1], frame.shape[0], QtGui.QImage.Format_RGB888))
@@ -179,6 +184,47 @@ def tracker_generate(self, index):
     print("Card Generated")
 
 
+# # Begin the predict
+# def predict(self, frame):
+#     try:
+#         zones, zone_annotators, polygons, box_annotators = draw_zones(
+#             self, frame)
+#         results = self.model(frame, verbose=False)
+#         result = results[0]
+
+#         lab = label(self, frame, result)
+
+#         return True
+#     except Exception as e:
+#         print(e)
+#         self.stop_capture()
+
+
+# def label(self, frame, results):
+#     mss, cv, ultralytics, YOLO, Annotator = load_modules()
+
+#     detections = sv.Detections(
+#         xyxy=results.boxes.xyxy.cpu().numpy(),
+#         confidence=results.boxes.conf.cpu().numpy(),
+#         class_id=results.boxes.cls.cpu().numpy().astype(int)
+#     )
+
+#     labels = [
+#         f"{self.model.names[class_id]} {confidence:0.2f}"
+#         for _, _, confidence, class_id, _
+#         in detections
+#     ]
+
+#     frame = self.box_annotator.annotate(
+#         scene=frame, detections=detections, labels=labels)
+
+#     cv.imshow("NAME", frame)
+
+#     cv.waitKey(0)
+
+#     # closing all open windows
+#     cv.destroyAllWindows()
+
 # Begin the predict
 def predict(self, frame):
     try:
@@ -192,6 +238,7 @@ def predict(self, frame):
         detections = sv.Detections.from_yolov8(result)
         # Filter out to only show What the User Selects
         # Had a NP.Bool Error: https://github.com/NVIDIA/TensorRT/issues/2557
+
         if self.filter:
             detections = detections[eval(self.filter) & (
                 detections.confidence > 0.5)]
@@ -209,12 +256,6 @@ def predict(self, frame):
             for _, _, confidence, class_id, _
             in detections
         ]
-
-        # labels = [
-        #     f"{self.model.names[int(detection[2])]} {detection[1]:0.2f}"
-        #     for detection
-        #     in detections
-        # ]
 
         for index, (zone, zone_annotator, box_annotator) in enumerate(zip(zones, zone_annotators, box_annotators)):
             mask = zone.trigger(detections=detections)
