@@ -165,6 +165,10 @@ class UIFunctions:
         self.setPolygonBtn.clicked.connect(self.set_polygon)
         self.setPolygonBtn.setEnabled(False)
 
+        # Clear Zones Button
+        self.polygonClearBtn.clicked.connect(self.clear_polygons)
+        self.polygonClearLatestBtn.clicked.connect(self.clear_polygons)
+
         self.polygon = []
         self.all_polygons = {}
 
@@ -187,12 +191,14 @@ class UIFunctions:
 
     def init_polygon(self):
         if self.createPolygonBtn.text() == "Create Tracking Zone":
+            self.screenCaptureLabel.setCursor(QCursor(Qt.CrossCursor))
             self.paintable_widget.setAttribute(
                 QtCore.Qt.WA_TransparentForMouseEvents, False)
             self.createPolygonBtn.setText("Cancel")
             self.setPolygonBtn.setEnabled(True)
             self.tracker.set_enabled(True)
         else:
+            self.screenCaptureLabel.setCursor(QCursor(Qt.ArrowCursor))
             self.paintable_widget.setAttribute(
                 QtCore.Qt.WA_TransparentForMouseEvents, True)
             self.paintable_widget.clear_circles()
@@ -200,6 +206,22 @@ class UIFunctions:
             self.setPolygonBtn.setEnabled(False)
             self.tracker.set_enabled(False)
             self.polygon = []
+
+    def clear_polygons(self):
+        btn_clicked = self.sender().text()
+        try:
+            if btn_clicked == "Clear \nAll":
+                self.all_polygons = {}
+                self.polygons = []
+                self.polygonLabel.setText("")
+                return True
+            self.all_polygons.popitem()
+            self.polygons = []
+            self.polygonLabel.setText("")
+            return True
+        except KeyError:
+            self.polygonLabel.setText("There are no Polygons to clear.")
+            print("Dictionary is Empty")
 
     def set_polygon(self):
         if self.polygon:

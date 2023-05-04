@@ -41,7 +41,7 @@ def start_capture(self):
 
     # Import Model Major Classes Used in predicitons
     dirname = os.path.dirname(__file__)
-    self.model = YOLO(r"src\models\firstLevel\train4\best.pt")
+    self.model = YOLO(r"src\models\firstLevel\best\best.pt")
 
     self.CLASS_NAMES_DICT = self.model.model.names
 
@@ -183,49 +183,9 @@ def tracker_generate(self, index):
     self.gridLayout_7.addWidget(widget, index+1, 0)
     print("Card Generated")
 
-
-# # Begin the predict
-# def predict(self, frame):
-#     try:
-#         zones, zone_annotators, polygons, box_annotators = draw_zones(
-#             self, frame)
-#         results = self.model(frame, verbose=False)
-#         result = results[0]
-
-#         lab = label(self, frame, result)
-
-#         return True
-#     except Exception as e:
-#         print(e)
-#         self.stop_capture()
-
-
-# def label(self, frame, results):
-#     mss, cv, ultralytics, YOLO, Annotator = load_modules()
-
-#     detections = sv.Detections(
-#         xyxy=results.boxes.xyxy.cpu().numpy(),
-#         confidence=results.boxes.conf.cpu().numpy(),
-#         class_id=results.boxes.cls.cpu().numpy().astype(int)
-#     )
-
-#     labels = [
-#         f"{self.model.names[class_id]} {confidence:0.2f}"
-#         for _, _, confidence, class_id, _
-#         in detections
-#     ]
-
-#     frame = self.box_annotator.annotate(
-#         scene=frame, detections=detections, labels=labels)
-
-#     cv.imshow("NAME", frame)
-
-#     cv.waitKey(0)
-
-#     # closing all open windows
-#     cv.destroyAllWindows()
-
 # Begin the predict
+
+
 def predict(self, frame):
     try:
         zones, zone_annotators, polygons, box_annotators = draw_zones(
