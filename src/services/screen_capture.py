@@ -1,5 +1,6 @@
 # Initial Modules to setup the Main Window Class
 import os
+import time
 from PySide6 import QtCore as qtc
 from PySide6 import QtWidgets as qtw
 from PySide6 import QtGui
@@ -58,8 +59,14 @@ def start_capture(self):
     self.box_annotator = sv.BoxAnnotator(
         thickness=2, text_thickness=2, text_scale=1)
 
+    # FPS Counter
+    self.fps_counter = []
+
     # Begin Capture loop
     while self.capturing:
+        # FPS COUNTING
+        start_time = time.time()
+
         # Updating Screen Capture Area if needed
         self.mon = {'top': self.screenTop, 'left': self.screenLeft,
                     'width': self.screenWidth, 'height': self.screenHeight}
@@ -89,6 +96,17 @@ def start_capture(self):
 
         # shows the frame on the display widget which is a QLabel
         self.screenCaptureLabel.setPixmap(scaled_pixmap)
+
+        # FPS COUNTING
+        end_time = time.time()
+        fps = 1 / (end_time - start_time)
+        self.fps_counter.append(fps)
+
+        if len(self.fps_counter) > 60:
+            self.fps_counter.pop(0)
+
+        avg_fps = sum(self.fps_counter) / len(self.fps_counter)
+        self.fpsCounterLabel.setText(f"FPS: {avg_fps:.2f}")
 
         # Just a way to break out the loop incase we need to
         if cv.waitKey(1) == ord("q"):
@@ -158,7 +176,7 @@ def tracker_generate(self, index):
     widget = generate_basic_layout(index)
     self.cards[f"card_{index}"] = widget
     self.gridLayout_7.addWidget(widget, index+1, 0)
-    print("generated")
+    print("Card Generated")
 
 
 # Begin the predict
@@ -175,7 +193,8 @@ def predict(self, frame):
         # Filter out to only show What the User Selects
         # Had a NP.Bool Error: https://github.com/NVIDIA/TensorRT/issues/2557
         if self.filter:
-            detections = detections[eval(self.filter)]
+            detections = detections[eval(self.filter) & (
+                detections.confidence > 0.5)]
         else:
             detections = detections[(detections.class_id == 0) & (
                 detections.confidence > 0.5)]
@@ -237,28 +256,3 @@ def predict(self, frame):
     except Exception as e:
         print(e)
         self.stop_capture()
-
-    # # Begin the predict
-    # def predict(self, frame):
-    #     # Predictions using YOLOv8
-
-    #     results = self.model.predict(source=frame, conf=0.8)
-    #     # print("RES: ", results)
-
-    #     # get Boxes and draw them
-    #     for r in results:
-
-    #         annotator = Annotator(frame)
-
-    #         boxes = r.boxes
-    #         for box in boxes:
-
-    #             # getting box coords (top, left, bottom, right) format
-    #             b = box.xyxy[0]
-    #             c = box.cls
-
-    #             annotator.box_label(b, self.model.names[int(c)])
-
-    #     frame = annotator.result()
-    #     # print(frame)
-    #     return frame

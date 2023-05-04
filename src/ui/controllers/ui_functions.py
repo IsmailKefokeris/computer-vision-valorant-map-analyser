@@ -163,6 +163,7 @@ class UIFunctions:
 
         self.createPolygonBtn.clicked.connect(self.init_polygon)
         self.setPolygonBtn.clicked.connect(self.set_polygon)
+        self.setPolygonBtn.setEnabled(False)
 
         self.polygon = []
         self.all_polygons = {}
@@ -189,39 +190,36 @@ class UIFunctions:
             self.paintable_widget.setAttribute(
                 QtCore.Qt.WA_TransparentForMouseEvents, False)
             self.createPolygonBtn.setText("Cancel")
+            self.setPolygonBtn.setEnabled(True)
             self.tracker.set_enabled(True)
-
         else:
             self.paintable_widget.setAttribute(
                 QtCore.Qt.WA_TransparentForMouseEvents, True)
             self.paintable_widget.clear_circles()
             self.createPolygonBtn.setText("Create Tracking Zone")
+            self.setPolygonBtn.setEnabled(False)
             self.tracker.set_enabled(False)
             self.polygon = []
 
     def set_polygon(self):
-        if self.polygonName.text() == "":
-            num = len(self.all_polygons) + 1
+        if self.polygon:
+            if len(self.polygon) > 1:
+                num = len(self.all_polygons) + 1
 
-            self.all_polygons[num] = self.polygon
+                self.all_polygons[num] = self.polygon
 
-            self.init_polygon()
+                self.init_polygon()
+
+                self.tracker_updated = True
+                self.polygons_updated = True
+                self.setPolygonBtn.setEnabled(False)
+                self.polygonLabel.setText("")
+            else:
+                self.polygonLabel.setText(
+                    "Polygon requires minimum of 2 points and max of 4")
         else:
-            name = self.polygonName.text()
-
-            if name in self.all_polygons:
-                self.polygonLabel.setText("Pick a unique Polygon Name!")
-                return
-
-            self.all_polygons[name] = self.polygon
-
-            self.init_polygon()
-
-        self.tracker_updated = True
-        self.polygons_updated = True
-        self.polygonLabel.setText("")
-        # print(self.all_polygons)
-        # print(self.polygon)
+            self.polygonLabel.setText(
+                "You must actually define where you want the polygon")
 
     def on_positionChanged(self, pos):
         # DEBUG FUNCTION
