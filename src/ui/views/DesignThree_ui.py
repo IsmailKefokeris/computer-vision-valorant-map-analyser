@@ -30,6 +30,9 @@ class Ui_MainWindow(object):
         MainWindow.resize(1280, 720)
         MainWindow.setMinimumSize(QSize(1280, 720))
         MainWindow.setMaximumSize(QSize(1280, 720))
+        icon = QIcon()
+        icon.addFile(u":/assets/images/icons/application_icon_1.ico", QSize(), QIcon.Normal, QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet(u"background-color: rgb(85, 85, 127)")
         self.actionExit = QAction(MainWindow)
         self.actionExit.setObjectName(u"actionExit")
@@ -115,9 +118,9 @@ class Ui_MainWindow(object):
 "QPushButton::hover{\n"
 "	background-color: red;\n"
 "}")
-        icon = QIcon()
-        icon.addFile(u":/assets/images/icons/cross.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.closeBtn.setIcon(icon)
+        icon1 = QIcon()
+        icon1.addFile(u":/assets/images/icons/cross.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.closeBtn.setIcon(icon1)
         self.minBtn = QPushButton(self.frameBar)
         self.minBtn.setObjectName(u"minBtn")
         self.minBtn.setGeometry(QRect(1130, 0, 40, 40))
@@ -129,9 +132,9 @@ class Ui_MainWindow(object):
 "QPushButton::hover{\n"
 "	background-color: rgb(133, 133, 199);\n"
 "}")
-        icon1 = QIcon()
-        icon1.addFile(u":/assets/images/icons/minimize-sign.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.minBtn.setIcon(icon1)
+        icon2 = QIcon()
+        icon2.addFile(u":/assets/images/icons/minimize-sign.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.minBtn.setIcon(icon2)
 
         self.horizontalLayout.addWidget(self.frameBar)
 
@@ -1613,8 +1616,8 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(0)
-        self.stackedWidget_2.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget_2.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
