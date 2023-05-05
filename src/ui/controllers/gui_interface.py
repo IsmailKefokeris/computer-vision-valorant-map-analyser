@@ -6,7 +6,11 @@ from PySide6 import QtWidgets as qtw
 from PySide6 import QtGui
 
 from PySide6.QtWidgets import QMainWindow, QGraphicsDropShadowEffect
+
+# Import Views
 from ui.views.DesignThree_ui import *
+from ui.views.splash_screen_ui import *
+
 from PySide6.QtCore import *
 from PySide6.QtGui import QPixmap, QImage
 
@@ -28,7 +32,7 @@ from services.screen_capture import *
 from services.generate_box import *
 from services.screen_capture_worker import *
 from services.module_loader import *
-# import cv2 as cv
+
 # Setup Main Window
 
 

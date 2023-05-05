@@ -45,11 +45,6 @@ def start_capture(self):
 
     self.CLASS_NAMES_DICT = self.model.model.names
 
-    # Set Location & Size of screen capture then initialise it
-    # self.mon = {'top': 0, 'left': 0, 'width': 500, 'height': 500}
-
-    # self.mon = {'top': 55, 'left': 33, 'width': 348, 'height': 342} Ascent Map Capture
-
     self.mon = {'top': self.screenTop, 'left': self.screenLeft,
                 'width': self.screenWidth, 'height': self.screenHeight}
     self.sct = mss()
@@ -65,8 +60,10 @@ def start_capture(self):
 
     # Begin Capture loop
     while self.capturing:
+        ################################################
         # FPS COUNTING
         start_time = time.time()
+        ################################################
 
         # Updating Screen Capture Area if needed
         self.mon = {'top': self.screenTop, 'left': self.screenLeft,
@@ -75,12 +72,8 @@ def start_capture(self):
         # Grabbing the Image
         sct_img = self.sct.grab(self.mon)
 
-        # Get the colours right
-        # frame = cv.cvtColor(np.array(sct_img), cv.COLOR_RGB2BGR)
-        frame = np.array(sct_img)
-
         # Ensuring the frame is readable for qtImage and most other things really
-        # frame = np.array(frame)
+        frame = np.array(sct_img)
         frame = frame[..., :3]
         frame = np.ascontiguousarray(frame)
 
@@ -90,6 +83,7 @@ def start_capture(self):
 
         frame = predict(self, frame)
 
+        # Get the colours right
         frame = cv.cvtColor(frame, cv.COLOR_RGB2BGR)
 
         pixmap = QtGui.QPixmap.fromImage(QtGui.QImage(
@@ -102,6 +96,7 @@ def start_capture(self):
         # shows the frame on the display widget which is a QLabel
         self.screenCaptureLabel.setPixmap(scaled_pixmap)
 
+        ################################################
         # FPS COUNTING
         end_time = time.time()
         fps = 1 / (end_time - start_time)
@@ -112,28 +107,14 @@ def start_capture(self):
 
         avg_fps = sum(self.fps_counter) / len(self.fps_counter)
         self.fpsCounterLabel.setText(f"FPS: {avg_fps:.2f}")
+        ################################################
 
         # Just a way to break out the loop incase we need to
         if cv.waitKey(1) == ord("q"):
             break
 
 
-def crop_and_mask(self, frame):
-    _, cv, _, _, _ = load_modules([False, True, False, False, False])
-    # Specific To Ascent
-    map = cv.imread("ascent.png")
-    grey_map = cv.cvtColor(map, cv.COLOR_BGR2GRAY)
-    ret, binary_mask = cv.threshold(grey_map, 127, 255, cv.THRESH_BINARY)
-
-    resized_mask = cv.resize(binary_mask, (frame.shape[1], frame.shape[0]))
-
-    frame_masked = cv.bitwise_and(frame, frame, mask=resized_mask)
-    return frame_masked
-
-
 def draw_zones(self, frame):
-
-    # print(f"type: {type(frame)}")
 
     if self.polygons_updated or len(self.all_polygons) > len(self.polygons):
         self.polygons = []
@@ -157,9 +138,6 @@ def draw_zones(self, frame):
     zones = [sv.PolygonZone(
         polygon=polygon, frame_resolution_wh=resoultion) for polygon in self.polygons]
 
-    # initiate annotators
-    # zone_annotator = sv.PolygonZoneAnnotator(
-    #     zone=zone, color=sv.Color.white(), thickness=2, text_thickness=3, text_scale=2)
     colors = sv.ColorPalette.default()
 
     zone_annotators = [sv.PolygonZoneAnnotator(zone=zone, color=colors.by_idx(
@@ -183,9 +161,8 @@ def tracker_generate(self, index):
     self.gridLayout_7.addWidget(widget, index+1, 0)
     print("Card Generated")
 
+
 # Begin the predict
-
-
 def predict(self, frame):
     try:
         zones, zone_annotators, polygons, box_annotators = draw_zones(
@@ -205,11 +182,6 @@ def predict(self, frame):
         else:
             detections = detections[(detections.class_id == 0) & (
                 detections.confidence > 0.5)]
-
-        # print(type(detections))
-
-        # for _, _, confidence, class_id, _ in detections:
-        #     print(confidence, class_id)
 
         labels = [
             f"{self.model.names[int(class_id)]} {confidence:0.2f}"
@@ -238,11 +210,6 @@ def predict(self, frame):
                 # Increment the count for the detected class
                 self.class_counts[class_name] += 1
 
-            # type = self.model.names[int(detections_filtered.class_id)]
-
-            # Print the counts for each class
-            # print("Class counts:")
-            # labels = self.findChildren(QLabel, f"desc")
             text = []
 
             for class_name, count in self.class_counts.items():
@@ -257,3 +224,16 @@ def predict(self, frame):
     except Exception as e:
         print(e)
         self.stop_capture()
+
+
+def crop_and_mask(self, frame):
+    _, cv, _, _, _ = load_modules([False, True, False, False, False])
+    # Specific To Ascent
+    map = cv.imread("ascent.png")
+    grey_map = cv.cvtColor(map, cv.COLOR_BGR2GRAY)
+    ret, binary_mask = cv.threshold(grey_map, 127, 255, cv.THRESH_BINARY)
+
+    resized_mask = cv.resize(binary_mask, (frame.shape[1], frame.shape[0]))
+
+    frame_masked = cv.bitwise_and(frame, frame, mask=resized_mask)
+    return frame_masked
