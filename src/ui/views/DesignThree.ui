@@ -511,7 +511,7 @@ QPushButton::hover {
                 <property name="currentIndex">
                  <number>0</number>
                 </property>
-                <widget class="QWidget" name="page_3">
+                <widget class="QWidget" name="classesSelectorPage">
                  <layout class="QGridLayout" name="gridLayout_6">
                   <item row="3" column="0">
                    <widget class="QLineEdit" name="topValueLabel">
@@ -1237,7 +1237,7 @@ QPushButton::hover {
                   </item>
                  </layout>
                 </widget>
-                <widget class="QWidget" name="page_4">
+                <widget class="QWidget" name="labelTrackerPage">
                  <layout class="QGridLayout" name="gridLayout_7">
                   <item row="0" column="0">
                    <widget class="QLabel" name="title">
@@ -1260,7 +1260,7 @@ QPushButton::hover {
                   </item>
                  </layout>
                 </widget>
-                <widget class="QWidget" name="page_5">
+                <widget class="QWidget" name="advancedSettingsPage">
                  <layout class="QGridLayout" name="gridLayout_9">
                   <item row="0" column="0" colspan="2">
                    <widget class="QLabel" name="screenCaptureDefinerLabel">
@@ -1634,7 +1634,7 @@ All</string>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>82</width>
+                    <width>182</width>
                     <height>16777215</height>
                    </size>
                   </property>
@@ -1657,7 +1657,7 @@ All</string>
 	border-radius: 10px;
 	color: white;
 	min-width: 80px;
-	max-width: 80px;
+	max-width: 180px;
 	min-height: 20px;
 }
 
@@ -1682,7 +1682,7 @@ QPushButton::hover {
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>82</width>
+                    <width>182</width>
                     <height>16777215</height>
                    </size>
                   </property>
@@ -1705,7 +1705,7 @@ QPushButton::hover {
 	border-radius: 10px;
 	color: white;
 	min-width: 80px;
-	max-width: 80px;
+	max-width: 180px;
 	min-height: 20px;
 }
 

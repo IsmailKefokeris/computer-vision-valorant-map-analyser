@@ -277,11 +277,11 @@ class Ui_MainWindow(object):
         self.stackedWidget_2.setObjectName(u"stackedWidget_2")
         self.stackedWidget_2.setMaximumSize(QSize(735, 16777215))
         self.stackedWidget_2.setStyleSheet(u"")
-        self.page_3 = QWidget()
-        self.page_3.setObjectName(u"page_3")
-        self.gridLayout_6 = QGridLayout(self.page_3)
+        self.classesSelectorPage = QWidget()
+        self.classesSelectorPage.setObjectName(u"classesSelectorPage")
+        self.gridLayout_6 = QGridLayout(self.classesSelectorPage)
         self.gridLayout_6.setObjectName(u"gridLayout_6")
-        self.topValueLabel = QLineEdit(self.page_3)
+        self.topValueLabel = QLineEdit(self.classesSelectorPage)
         self.topValueLabel.setObjectName(u"topValueLabel")
         self.topValueLabel.setMinimumSize(QSize(84, 25))
         self.topValueLabel.setMaximumSize(QSize(84, 25))
@@ -291,7 +291,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_6.addWidget(self.topValueLabel, 3, 0, 1, 1)
 
-        self.heightMinusBtn = QPushButton(self.page_3)
+        self.heightMinusBtn = QPushButton(self.classesSelectorPage)
         self.screenCaptureControls = QButtonGroup(MainWindow)
         self.screenCaptureControls.setObjectName(u"screenCaptureControls")
         self.screenCaptureControls.addButton(self.heightMinusBtn)
@@ -321,7 +321,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_6.addWidget(self.heightMinusBtn, 6, 3, 1, 1)
 
-        self.topMinusBtn = QPushButton(self.page_3)
+        self.topMinusBtn = QPushButton(self.classesSelectorPage)
         self.screenCaptureControls.addButton(self.topMinusBtn)
         self.topMinusBtn.setObjectName(u"topMinusBtn")
         self.topMinusBtn.setMinimumSize(QSize(84, 24))
@@ -346,7 +346,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_6.addWidget(self.topMinusBtn, 6, 0, 1, 1)
 
-        self.leftMinusBtn = QPushButton(self.page_3)
+        self.leftMinusBtn = QPushButton(self.classesSelectorPage)
         self.screenCaptureControls.addButton(self.leftMinusBtn)
         self.leftMinusBtn.setObjectName(u"leftMinusBtn")
         self.leftMinusBtn.setMinimumSize(QSize(84, 24))
@@ -371,7 +371,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_6.addWidget(self.leftMinusBtn, 6, 1, 1, 1)
 
-        self.widthValueLabel = QLineEdit(self.page_3)
+        self.widthValueLabel = QLineEdit(self.classesSelectorPage)
         self.widthValueLabel.setObjectName(u"widthValueLabel")
         self.widthValueLabel.setMinimumSize(QSize(84, 25))
         self.widthValueLabel.setMaximumSize(QSize(84, 25))
@@ -379,7 +379,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_6.addWidget(self.widthValueLabel, 3, 2, 1, 1)
 
-        self.leftPlusBtn = QPushButton(self.page_3)
+        self.leftPlusBtn = QPushButton(self.classesSelectorPage)
         self.screenCaptureControls.addButton(self.leftPlusBtn)
         self.leftPlusBtn.setObjectName(u"leftPlusBtn")
         self.leftPlusBtn.setMinimumSize(QSize(84, 24))
@@ -404,7 +404,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_6.addWidget(self.leftPlusBtn, 5, 1, 1, 1)
 
-        self.topPlusBtn = QPushButton(self.page_3)
+        self.topPlusBtn = QPushButton(self.classesSelectorPage)
         self.screenCaptureControls.addButton(self.topPlusBtn)
         self.topPlusBtn.setObjectName(u"topPlusBtn")
         self.topPlusBtn.setMinimumSize(QSize(84, 24))
@@ -429,7 +429,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_6.addWidget(self.topPlusBtn, 5, 0, 1, 1)
 
-        self.heightValueLabel = QLineEdit(self.page_3)
+        self.heightValueLabel = QLineEdit(self.classesSelectorPage)
         self.heightValueLabel.setObjectName(u"heightValueLabel")
         self.heightValueLabel.setMinimumSize(QSize(84, 25))
         self.heightValueLabel.setMaximumSize(QSize(84, 25))
@@ -437,7 +437,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_6.addWidget(self.heightValueLabel, 3, 3, 1, 1)
 
-        self.leftValueLabel = QLineEdit(self.page_3)
+        self.leftValueLabel = QLineEdit(self.classesSelectorPage)
         self.leftValueLabel.setObjectName(u"leftValueLabel")
         self.leftValueLabel.setMinimumSize(QSize(84, 25))
         self.leftValueLabel.setMaximumSize(QSize(84, 25))
@@ -445,7 +445,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_6.addWidget(self.leftValueLabel, 3, 1, 1, 1)
 
-        self.widthMinusBtn = QPushButton(self.page_3)
+        self.widthMinusBtn = QPushButton(self.classesSelectorPage)
         self.screenCaptureControls.addButton(self.widthMinusBtn)
         self.widthMinusBtn.setObjectName(u"widthMinusBtn")
         self.widthMinusBtn.setMinimumSize(QSize(84, 24))
@@ -470,7 +470,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_6.addWidget(self.widthMinusBtn, 6, 2, 1, 1)
 
-        self.heightPlusBtn = QPushButton(self.page_3)
+        self.heightPlusBtn = QPushButton(self.classesSelectorPage)
         self.screenCaptureControls.addButton(self.heightPlusBtn)
         self.heightPlusBtn.setObjectName(u"heightPlusBtn")
         self.heightPlusBtn.setMinimumSize(QSize(84, 24))
@@ -495,7 +495,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_6.addWidget(self.heightPlusBtn, 5, 3, 1, 1)
 
-        self.widthPlusBtn = QPushButton(self.page_3)
+        self.widthPlusBtn = QPushButton(self.classesSelectorPage)
         self.screenCaptureControls.addButton(self.widthPlusBtn)
         self.widthPlusBtn.setObjectName(u"widthPlusBtn")
         self.widthPlusBtn.setMinimumSize(QSize(84, 24))
@@ -520,7 +520,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_6.addWidget(self.widthPlusBtn, 5, 2, 1, 1)
 
-        self.classSelectorFrame = QFrame(self.page_3)
+        self.classSelectorFrame = QFrame(self.classesSelectorPage)
         self.classSelectorFrame.setObjectName(u"classSelectorFrame")
         self.classSelectorFrame.setStyleSheet(u"#classSelectorFrame{\n"
 "	max-width: 615px;\n"
@@ -672,12 +672,12 @@ class Ui_MainWindow(object):
 
         self.gridLayout_6.addWidget(self.classSelectorFrame, 1, 0, 1, 4)
 
-        self.stackedWidget_2.addWidget(self.page_3)
-        self.page_4 = QWidget()
-        self.page_4.setObjectName(u"page_4")
-        self.gridLayout_7 = QGridLayout(self.page_4)
+        self.stackedWidget_2.addWidget(self.classesSelectorPage)
+        self.labelTrackerPage = QWidget()
+        self.labelTrackerPage.setObjectName(u"labelTrackerPage")
+        self.gridLayout_7 = QGridLayout(self.labelTrackerPage)
         self.gridLayout_7.setObjectName(u"gridLayout_7")
-        self.title = QLabel(self.page_4)
+        self.title = QLabel(self.labelTrackerPage)
         self.title.setObjectName(u"title")
         self.title.setStyleSheet(u"#title{\n"
 "	font: 700 16pt \"Cascadia Code\";\n"
@@ -690,12 +690,12 @@ class Ui_MainWindow(object):
 
         self.gridLayout_7.addWidget(self.title, 0, 0, 1, 1)
 
-        self.stackedWidget_2.addWidget(self.page_4)
-        self.page_5 = QWidget()
-        self.page_5.setObjectName(u"page_5")
-        self.gridLayout_9 = QGridLayout(self.page_5)
+        self.stackedWidget_2.addWidget(self.labelTrackerPage)
+        self.advancedSettingsPage = QWidget()
+        self.advancedSettingsPage.setObjectName(u"advancedSettingsPage")
+        self.gridLayout_9 = QGridLayout(self.advancedSettingsPage)
         self.gridLayout_9.setObjectName(u"gridLayout_9")
-        self.screenCaptureDefinerLabel = QLabel(self.page_5)
+        self.screenCaptureDefinerLabel = QLabel(self.advancedSettingsPage)
         self.screenCaptureDefinerLabel.setObjectName(u"screenCaptureDefinerLabel")
         self.screenCaptureDefinerLabel.setMinimumSize(QSize(100, 20))
         self.screenCaptureDefinerLabel.setMaximumSize(QSize(180, 65))
@@ -710,7 +710,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_9.addWidget(self.screenCaptureDefinerLabel, 0, 0, 1, 2)
 
-        self.screenCaptureDefiner = QComboBox(self.page_5)
+        self.screenCaptureDefiner = QComboBox(self.advancedSettingsPage)
         self.screenCaptureDefiner.setObjectName(u"screenCaptureDefiner")
         self.screenCaptureDefiner.setStyleSheet(u"#screenCaptureDefiner {\n"
 "	border: 1px solid rgb(255, 255, 255);\n"
@@ -741,7 +741,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_9.addWidget(self.screenCaptureDefiner, 0, 2, 1, 1)
 
-        self.fileBrowserLabel = QLabel(self.page_5)
+        self.fileBrowserLabel = QLabel(self.advancedSettingsPage)
         self.fileBrowserLabel.setObjectName(u"fileBrowserLabel")
         self.fileBrowserLabel.setMinimumSize(QSize(100, 20))
         self.fileBrowserLabel.setMaximumSize(QSize(180, 65))
@@ -752,7 +752,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_9.addWidget(self.fileBrowserLabel, 1, 0, 1, 1)
 
-        self.fileBrowseBox = QGroupBox(self.page_5)
+        self.fileBrowseBox = QGroupBox(self.advancedSettingsPage)
         self.fileBrowseBox.setObjectName(u"fileBrowseBox")
         self.fileBrowseBox.setStyleSheet(u"border: 0px")
         self.gridLayout_8 = QGridLayout(self.fileBrowseBox)
@@ -799,7 +799,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_9.addWidget(self.fileBrowseBox, 1, 1, 1, 2)
 
-        self.confidenceLabel = QLabel(self.page_5)
+        self.confidenceLabel = QLabel(self.advancedSettingsPage)
         self.confidenceLabel.setObjectName(u"confidenceLabel")
         self.confidenceLabel.setMinimumSize(QSize(100, 20))
         self.confidenceLabel.setMaximumSize(QSize(180, 65))
@@ -810,7 +810,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_9.addWidget(self.confidenceLabel, 2, 0, 1, 1)
 
-        self.confidenceSlider = QSlider(self.page_5)
+        self.confidenceSlider = QSlider(self.advancedSettingsPage)
         self.confidenceSlider.setObjectName(u"confidenceSlider")
         self.confidenceSlider.setMaximumSize(QSize(450, 25))
         self.confidenceSlider.setCursor(QCursor(Qt.OpenHandCursor))
@@ -818,7 +818,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_9.addWidget(self.confidenceSlider, 2, 2, 1, 1)
 
-        self.stackedWidget_2.addWidget(self.page_5)
+        self.stackedWidget_2.addWidget(self.advancedSettingsPage)
 
         self.gridLayout_3.addWidget(self.stackedWidget_2, 0, 8, 6, 1)
 
@@ -913,7 +913,7 @@ class Ui_MainWindow(object):
         self.previousBtn = QPushButton(self.mainPage)
         self.previousBtn.setObjectName(u"previousBtn")
         self.previousBtn.setMinimumSize(QSize(82, 22))
-        self.previousBtn.setMaximumSize(QSize(82, 16777215))
+        self.previousBtn.setMaximumSize(QSize(182, 16777215))
         font9 = QFont()
         font9.setFamilies([u"Cascadia Code"])
         font9.setPointSize(10)
@@ -928,7 +928,7 @@ class Ui_MainWindow(object):
 "	border-radius: 10px;\n"
 "	color: white;\n"
 "	min-width: 80px;\n"
-"	max-width: 80px;\n"
+"	max-width: 180px;\n"
 "	min-height: 20px;\n"
 "}\n"
 "\n"
@@ -943,7 +943,7 @@ class Ui_MainWindow(object):
         self.nextBtn = QPushButton(self.mainPage)
         self.nextBtn.setObjectName(u"nextBtn")
         self.nextBtn.setMinimumSize(QSize(82, 22))
-        self.nextBtn.setMaximumSize(QSize(82, 16777215))
+        self.nextBtn.setMaximumSize(QSize(182, 16777215))
         self.nextBtn.setFont(font9)
         self.nextBtn.setCursor(QCursor(Qt.PointingHandCursor))
         self.nextBtn.setStyleSheet(u"QPushButton{\n"
@@ -953,7 +953,7 @@ class Ui_MainWindow(object):
 "	border-radius: 10px;\n"
 "	color: white;\n"
 "	min-width: 80px;\n"
-"	max-width: 80px;\n"
+"	max-width: 180px;\n"
 "	min-height: 20px;\n"
 "}\n"
 "\n"

@@ -62,8 +62,10 @@ class UIFunctions:
         # Home Page
         self.mainPageBtn.clicked.connect(
             lambda: self.stackedWidget.setCurrentWidget(self.mainPage))
-        # Buttons in Home Page
+        # Buttons in Home Page to control subpage
+        self.nextBtn.setText(str(next_page_name(self)))
         self.nextBtn.clicked.connect(lambda: go_to_next_page(self))
+        self.previousBtn.setText(str(previous_page_name(self)))
         self.previousBtn.clicked.connect(lambda: go_to_previous_page(self))
 
         # Pre-Requisites Page
@@ -89,15 +91,6 @@ class UIFunctions:
         ####################################################################################################
         # Screen Capture Setup
         ####################################################################################################
-
-        # Screen Capture Variables
-
-        # self.mon = {'top': 55, 'left': 33, 'width': 348, 'height': 342} Ascent Map Capture
-
-        # self.screenTop = 55
-        # self.screenLeft = 33
-        # self.screenWidth = 348
-        # self.screenHeight = 342
 
         self.screenTop = 55
         self.screenLeft = 33
