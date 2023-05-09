@@ -8,6 +8,9 @@ Computer Vision Valorant Map Analyser (CV-VMA) is my first attempt to utilise Co
 
 This project is built during and for my **Final Year Project** (Dissertation) at Southampton Solent University.
 
+### Tutorial - Installation & Usage
+[![Tutorial on Install and Usage](https://img.youtube.com/vi/KlLwV3Yh6SA/maxresdefault.jpg)](http://www.youtube.com/watch?v=KlLwV3Yh6SA)
+
 ## Technologies Used:
 
 1. YoloV8
