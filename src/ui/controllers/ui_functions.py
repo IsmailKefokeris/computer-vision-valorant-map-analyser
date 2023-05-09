@@ -204,13 +204,38 @@ class UIFunctions:
         btn_clicked = self.sender().text()
         try:
             if btn_clicked == "Clear \nAll":
+                # Clear all polygons code
                 self.all_polygons = {}
                 self.polygons = []
                 self.polygonLabel.setText("")
+
+                # Clear all Trackers from the Label Tracker Page
+                for i in reversed(range(self.gridLayout_7.count())):
+                    if i != 0:
+                        # print("OBJECT NAME: ", self.gridLayout_7.itemAt(i).widget().objectName())
+                        self.gridLayout_7.itemAt(i).widget().setParent(None)
+
                 return True
-            self.all_polygons.popitem()
+
+            # Clear latest Polygon Code
+            # Remove and retrieve latest polygon
+            item = self.all_polygons.popitem()
+
             self.polygons = []
             self.polygonLabel.setText("")
+
+            ################################
+            #
+            # LABEL REMOVER - Does NOT WORK
+            #
+            ################################
+            for i in reversed(range(self.gridLayout_7.count())):
+                # print("COMP: ", self.gridLayout_7.itemAt(i).widget().objectName().split("_")[1]," ",item[0]-1)
+                if i != 0:
+                    if int(self.gridLayout_7.itemAt(i).widget().objectName().split("_")[1]) == int(item[0]-1):
+                        self.gridLayout_7.itemAt(i).widget().deleteLater()
+                        break
+
             return True
         except KeyError:
             self.polygonLabel.setText("There are no Polygons to clear.")

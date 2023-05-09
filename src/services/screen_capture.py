@@ -157,6 +157,7 @@ def draw_zones(self, frame):
 
 def tracker_generate(self, index):
     widget = generate_basic_layout(index)
+    widget.setObjectName(f"card_{index}")
     self.cards[f"card_{index}"] = widget
     self.gridLayout_7.addWidget(widget, index+1, 0)
     print("Card Generated")
