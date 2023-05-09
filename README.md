@@ -23,3 +23,13 @@ This project is built during and for my **Final Year Project** (Dissertation) at
 
 1. [HenrikDev API](https://docs.henrikdev.xyz/valorant.html)
 1. [Techchrism’s Unofficial Valorant API](https://valapidocs.techchrism.me/)
+
+
+## Attribution
+
+1. Wrench and screw driver Icon: <a href="https://www.flaticon.com/free-icons/support" title="support icons">Support icons created by monkik - Flaticon</a>
+1. Bug: <a href="https://www.flaticon.com/free-icons/bug" title="bug icons">Bug icons created by Freepik - Flaticon</a>
+1. Settings: <a href="https://www.flaticon.com/free-icons/settings" title="settings icons">Settings icons created by Freepik - Flaticon</a>
+1. Home: <a href="https://www.flaticon.com/free-icons/main-page" title="main page icons">Main page icons created by Giyonces  - Flaticon</a>
+1. Minimise: <a href="https://www.flaticon.com/free-icons/minus-button" title="minus button icons">Minus button icons created by Circlon Tech - Flaticon</a>
+1. Close: <a href="https://www.flaticon.com/free-icons/close" title="close icons">Close icons created by VectorPortal - Flaticon</a>
