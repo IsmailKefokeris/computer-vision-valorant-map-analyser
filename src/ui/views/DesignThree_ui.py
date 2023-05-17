@@ -894,11 +894,11 @@ class Ui_MainWindow(object):
         sizePolicy1.setHeightForWidth(self.screenCaptureLabel.sizePolicy().hasHeightForWidth())
         self.screenCaptureLabel.setSizePolicy(sizePolicy1)
         self.screenCaptureLabel.setMinimumSize(QSize(500, 500))
-        self.screenCaptureLabel.setMaximumSize(QSize(600, 500))
+        self.screenCaptureLabel.setMaximumSize(QSize(550, 500))
         self.screenCaptureLabel.setCursor(QCursor(Qt.ArrowCursor))
         self.screenCaptureLabel.setStyleSheet(u"#screenCaptureLabel{\n"
 "	min-width: 500px;\n"
-"	max-width: 600px;\n"
+"	max-width: 550px;\n"
 "	min-height: 500px;\n"
 "	max-height: 500px;\n"
 "}")

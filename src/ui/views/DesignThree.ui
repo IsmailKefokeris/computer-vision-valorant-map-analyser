@@ -1593,7 +1593,7 @@ All</string>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>600</width>
+                  <width>550</width>
                   <height>500</height>
                  </size>
                 </property>
@@ -1603,7 +1603,7 @@ All</string>
                 <property name="styleSheet">
                  <string notr="true">#screenCaptureLabel{
 	min-width: 500px;
-	max-width: 600px;
+	max-width: 550px;
 	min-height: 500px;
 	max-height: 500px;
 }</string>

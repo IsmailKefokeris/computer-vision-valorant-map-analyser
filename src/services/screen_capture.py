@@ -28,10 +28,12 @@ from supervision.draw.color import ColorPalette
 from services.generate_box import *
 from services.module_loader import *
 
-
 # Begin the Capture Process
+
+
 def start_capture(self):
     mss, cv, ultralytics, YOLO, Annotator = load_modules()
+
     ultralytics.checks()
 
     self.lastIndex = 0
@@ -57,6 +59,7 @@ def start_capture(self):
 
     # FPS Counter
     self.fps_counter = []
+    self.polygonLabel.setText("")
 
     # Begin Capture loop
     while self.capturing:
@@ -120,9 +123,9 @@ def draw_zones(self, frame):
         self.polygons = []
         for key, polygon in self.all_polygons.items():
             # print(polygon)
-            print(f"before: {polygon}")
+            # print(f"before: {polygon}")
             poly = np.array(polygon)
-            print(f"After: {poly}")
+            # print(f"After: {poly}")
 
             self.polygons.append(poly)
         print("POLYGONS UPDATED")

@@ -30,8 +30,10 @@ import keyboard
 
 from services.screen_capture import *
 from services.generate_box import *
-from services.screen_capture_worker import *
 from services.module_loader import *
+
+
+from scripts.threads.ScreenCaptureThread import *
 
 # Setup Main Window
 
@@ -96,22 +98,28 @@ class MainWindow(QMainWindow, Ui_MainWindow, UIFunctions):
     def start_capture_thread(self):
         # self.thread = Thread(target=self.start_capture)
 
-        # Update the Buttons
-        self.startBtn.setEnabled(False)
-        self.stopBtn.setEnabled(True)
-        self.capturing = True
-        try:
-            start_capture(self)
-        except Exception as e:
-            print(e)
+        # # Update the Buttons
+        # self.startBtn.setEnabled(False)
+        # self.stopBtn.setEnabled(True)
+        # self.capturing = True
+        # try:
+        #     start_capture(self)
+        # except Exception as e:
+        #     print(e)
+
+        self.screen_capture_thread = ScreenCaptureThread(self)
+
+        self.screen_capture_thread.start()
 
     # Stop the Capture Process
     def stop_capture(self):
-        # Stop Capturing
-        self.capturing = False
-        # Update Buttons
-        self.startBtn.setEnabled(True)
-        self.stopBtn.setEnabled(False)
+        # # Stop Capturing
+        # self.capturing = False
+        # # Update Buttons
+        # self.startBtn.setEnabled(True)
+        # self.stopBtn.setEnabled(False)
+
+        self.screen_capture_thread.stop()
 
     def get_setting_values(self):
         self.account_settings = qtc.QSettings("CV-VMA", "Account Information")
